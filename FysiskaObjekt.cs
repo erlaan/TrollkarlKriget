@@ -10,9 +10,15 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Trollkarlkriget
 {
-    public class FysiskaObjekt
+    abstract class FysiskaObjekt
     {
-        public FysiskaObjekt()
+        protected bool isAlive = true;
+
+        public FysiskaObjekt(Texture2D texture, Vector2 position)
+        {
+
+        }
+        public bool CheckCollision(FysiskaObjekt other)
         {
 
         }

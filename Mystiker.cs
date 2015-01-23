@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TrollkarlKriget
 {
-	public class world
+	public class Mystiker
 	{
-		public world ()
+		public Mystiker ()
 		{
 		}
 	}

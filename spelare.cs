@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -37,7 +38,26 @@ namespace Trollkarlskriget
 		}
 		public void Update(spelare otherspelare, world world)
 		{
-			//TODO Lägga till update funktioner
+			KeyboardState newState = Keyboard.GetState (); 
+			if (newState.IsKeyDown(Jump)){
+					//TODO Add Jump funktion
+				}
+
+			if (newState.IsKeyDown (Right)) {
+
+				position.X += 5;
+			}
+
+			if (newState.IsKeyDown (Left)) {
+
+				position.X -= 5;
+			}
+
+			if (newState.IsKeyDown (Trollformel)) {
+			}
+
+			if (newState.IsKeyDown (Slash)) {
+			}
 		}
 		public void Draw(SpriteBatch spritebatch)
 		{

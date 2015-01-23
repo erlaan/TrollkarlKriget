@@ -14,6 +14,7 @@ namespace Trollkarlskriget
 {
 	public class spelare
 	{
+		private Actions action;
 		private Keys Jump;
 		private Keys Right;
 		private Keys Left;
@@ -23,7 +24,7 @@ namespace Trollkarlskriget
 		private Vector2 position;
 
 
-		public spelare ()
+		public spelare (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys slash, Keys trollforemel)
 		{
 			this.position = position;
 			this.texture = texture;
@@ -32,6 +33,7 @@ namespace Trollkarlskriget
 			this.Left = left;
 			this.Trollformel = trollformel;
 			this.Slash = slash;
+			action = Actions.still;
 		}
 		public void Update(spelare otherspelare, world world)
 		{

@@ -54,9 +54,11 @@ namespace Trollkarlskriget
 			}
 
 			if (newState.IsKeyDown (Trollformel)) {
+				//TODO Add kasta spells funktion
 			}
 
 			if (newState.IsKeyDown (Slash)) {
+				//TODO Add slag funktion
 			}
 		}
 		public void Draw(SpriteBatch spritebatch)

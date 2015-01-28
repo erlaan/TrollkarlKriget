@@ -9,12 +9,23 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 
-namespace TrollkarlKriget
+namespace Trollkarlskriget
 {
 	public class world
 	{
-		public world ()
+		public List <fyrkanter> tiles;
+		public float Gravittion = 20;
+
+		public world(List<fyrkanter> tiles)
 		{
+			this.tiles = tiles;
+		}
+		public void Draw(SpriteBatch spriteBatch)
+		{
+			foreach (var tile in tiles)
+			{
+				tile.Draw(spriteBatch);
+			}
 		}
 	}
 }

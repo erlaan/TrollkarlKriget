@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +23,7 @@ namespace Trollkarlskriget
 		private Keys Slash;
 		private Texture2D texture;
 		private Vector2 position;
+		private int hurmangasprite = 6;
 
 
 		public spelare (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys slash, Keys trollforemel)
@@ -34,36 +35,103 @@ namespace Trollkarlskriget
 			this.Left = left;
 			this.Trollformel = trollformel;
 			this.Slash = slash;
-			action = Actions.still;
+			action = Actions.Still;
 		}
 		public void Update(spelare otherspelare, world world)
 		{
 			KeyboardState newState = Keyboard.GetState (); 
 			if (newState.IsKeyDown(Jump)){
 					//TODO Add Jump funktion
+				action = Actions.Jump;
 				}
 
 			if (newState.IsKeyDown (Right)) {
 
 				position.X += 5;
+				action = Actions.Springahöger;
 			}
 
 			if (newState.IsKeyDown (Left)) {
 
 				position.X -= 5;
+				action = Actions.Springavänster;
 			}
 
 			if (newState.IsKeyDown (Trollformel)) {
 				//TODO Add kasta spells funktion
+				action = Actions.Kastamagi;
 			}
 
 			if (newState.IsKeyDown (Slash)) {
 				//TODO Add slag funktion
+				action = Actions.Slash;
+			} 
+
+
+			Rectangle myRect = new Rectangle(
+				Convert.ToInt32(position.X),
+				Convert.ToInt32(position.Y),
+				texture.Width,
+				(texture.Height / hurmangasprite));
+
+			foreach (var tile in world.tiles)
+			{
+				while (tile.isColliding(myRect))
+				{
+					collided = true;
+					if (action == Actions.Jumping || action == Actions.Jumping)
+					{
+						position.Y--;
+						myRect = new Rectangle ( Convert.ToInt32(position.X),
+							Convert.ToInt32(position.Y), 
+							texture.Width, (texture.Height / hurmangasprite));
+					}
+				}
 			}
-		}
-		public void Draw(SpriteBatch spritebatch)
+		if (collided)
 		{
-			//TODO Lägga till en ritfunktioner
+			action = Actions.Still;
+		}
+
+
+
+		}
+		public void Draw(SpriteBatch spriteBatch)
+		{
+
+			int spriteHeight = texture.Height / 3; 
+			switch (action)
+			{
+			case (Actions.Still):
+				spriteBatch.Draw(texture, position, new Rectangle(0,0,
+					texture.Width, spriteHeight), Color.White);
+				break;
+
+			case (Actions.Jump):
+				spriteBatch.Draw(texture, position, new Rectangle(0,spriteHeight*2,
+					texture.Width, spriteHeight), Color.White);
+
+				break;
+			case (Actions.Slash):
+				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight,
+					texture.Width, spriteHeight), Color.White);
+
+				break;
+			case (Actions.Kastamagi):
+				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight*3,
+					texture.Width, spriteHeight), Color.White);
+
+				break;
+
+			case (Actions.Springahöger):
+				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 4,
+					texture.Width, spriteHeight), Color.White);
+
+				break;
+			case (Actions.Springavänster):
+				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 5,
+					texture.Width, spriteHeight), Color.White);
+			}
 		}
 	}
 }

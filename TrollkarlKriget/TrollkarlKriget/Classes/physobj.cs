@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Trollkarlkriget
+namespace Wizards
 {
     class physobj
     {
@@ -21,9 +21,15 @@ namespace Trollkarlkriget
         {
 
         }
-        public bool CheckCollision(physobj other)
+        public bool isColliding(physobj other)
         {
-            return false;
+            return myRect.Intersects(otherRect);
         }
+        public bool isAlive
+        {
+            get { return isAlive; }
+            set { isAlive value; }
+        }
+        
     }
 }

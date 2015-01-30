@@ -1,8 +1,13 @@
-﻿namespace TrollkarlsKriget
+﻿namespace Wizards
 {
 	public enum Actions
 	{
-		Still, Jump, Slash, Kastamagi, Springahöger, Springavänster
+		Still, 
+        Jump, 
+        Melee, 
+        Spell, 
+        Right, 
+        Left
 	}
 }
 

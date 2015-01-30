@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -9,14 +12,14 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 
-namespace Trollkarlskriget
+namespace Wizards
 {
 	public class world
 	{
-		public List <fyrkanter> tiles;
+		public List <tiles> tiles;
 		public float Gravittion = 20;
 
-		public world(List<fyrkanter> tiles)
+		public world(List<tiles> tiles)
 		{
 			this.tiles = tiles;
 		}

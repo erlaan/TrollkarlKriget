@@ -11,33 +11,33 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Trollkarlskriget
+namespace Wizards
 {
-	public class spelare
+	public class player
 	{
 		private Actions action;
 		private Keys Jump;
 		private Keys Right;
 		private Keys Left;
-		private Keys Trollformel;
-		private Keys Slash;
+		private Keys Spell;
+		private Keys Melee;
 		private Texture2D texture;
 		private Vector2 position;
-		private int hurmangasprite = 6;
+		private int spritenum = 6;
 
 
-		public spelare (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys slash, Keys trollforemel)
+		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
 		{
 			this.position = position;
 			this.texture = texture;
 			this.Jump = jump;
 			this.Right = right;
 			this.Left = left;
-			this.Trollformel = trollformel;
-			this.Slash = slash;
+			this.Spell = spell;
+			this.Melee = melee;
 			action = Actions.Still;
 		}
-		public void Update(spelare otherspelare, world world)
+		public void Update(player otherplayer, world world)
 		{
 			KeyboardState newState = Keyboard.GetState (); 
 			if (newState.IsKeyDown(Jump)){

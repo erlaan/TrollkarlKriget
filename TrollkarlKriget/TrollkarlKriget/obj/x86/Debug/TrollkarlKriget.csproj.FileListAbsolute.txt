@@ -1,0 +1,2 @@
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\TrollkarlKriget.csprojResolveAssemblyReference.cache
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt

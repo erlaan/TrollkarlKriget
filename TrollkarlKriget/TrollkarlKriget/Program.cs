@@ -1,6 +1,6 @@
 using System;
 
-namespace TrollkarlKriget
+namespace Wizards
 {
 #if WINDOWS || XBOX
     static class Program

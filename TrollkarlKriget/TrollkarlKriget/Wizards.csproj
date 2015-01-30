@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="actions.cs" />
+    <Compile Include="Classes\baseobj.cs" />
     <Compile Include="Classes\mage_fire.cs" />
     <Compile Include="Classes\tiles.cs" />
     <Compile Include="Classes\physobj.cs" />

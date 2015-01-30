@@ -11,19 +11,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Trollkarlkriget
+namespace Wizards.Classes
 {
-    class physobj
+    class baseobj
     {
-        protected bool isAlive = true;
-
-        public physobj(Texture2D texture, Vector2 position)
+        public baseobj(Texture2D texture, Vector2 position)
         {
 
-        }
-        public bool CheckCollision(physobj other)
-        {
-            return false;
         }
     }
 }

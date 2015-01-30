@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrollkarlKriget", "TrollkarlKriget\TrollkarlKriget\TrollkarlKriget.csproj", "{D086CC11-ED12-49FB-BE45-FE5314A972B9}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "TrollkarlKrigetContent", "TrollkarlKriget\TrollkarlKrigetContent\TrollkarlKrigetContent.contentproj", "{B3C72205-2B45-46B1-93F8-97340E495DD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D086CC11-ED12-49FB-BE45-FE5314A972B9}.Debug|x86.ActiveCfg = Debug|x86
+		{D086CC11-ED12-49FB-BE45-FE5314A972B9}.Debug|x86.Build.0 = Debug|x86
+		{D086CC11-ED12-49FB-BE45-FE5314A972B9}.Release|x86.ActiveCfg = Release|x86
+		{D086CC11-ED12-49FB-BE45-FE5314A972B9}.Release|x86.Build.0 = Release|x86
+		{B3C72205-2B45-46B1-93F8-97340E495DD3}.Debug|x86.ActiveCfg = Debug|x86
+		{B3C72205-2B45-46B1-93F8-97340E495DD3}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

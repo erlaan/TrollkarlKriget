@@ -12,9 +12,9 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 
-namespace Wizards : player
+namespace Wizards
 {
-	public class Mystiker
+	public class Mystiker : player
 	{
 		public Mystiker ()
 		{

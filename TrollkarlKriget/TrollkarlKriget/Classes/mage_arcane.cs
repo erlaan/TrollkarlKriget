@@ -14,9 +14,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-	public class Mystiker : player
+	public class Arcanist : player
 	{
-		public Mystiker ()
+        public Arcanist()
 		{
 		}
 	}

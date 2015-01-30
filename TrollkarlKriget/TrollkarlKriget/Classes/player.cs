@@ -24,9 +24,9 @@ namespace Wizards
 		private Texture2D texture;
 		private Vector2 position;
 		private int spritenum = 6;
-        private int acceleration;
-        private int maxspeed;
-        private float curspeed;
+        private int acceleration = 1;
+        private int maxspeed = 25;
+        private float curspeed = 0;
 
 
 		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)

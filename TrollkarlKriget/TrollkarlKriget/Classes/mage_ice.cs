@@ -14,9 +14,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-	public class Ismagiker : player
+	public class Hydromancer : player
 	{
-		public Ismagiker ()
+        public Hydromancer()
 		{
 		}
 	}

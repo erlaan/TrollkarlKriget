@@ -16,7 +16,8 @@ namespace Wizards
 {
 	public class Arcanist : player
 	{
-        public Arcanist()
+		public Arcanist(Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
+			:base(texture, position,jump,right,left,melee,spell)
 		{
 		}
 	}

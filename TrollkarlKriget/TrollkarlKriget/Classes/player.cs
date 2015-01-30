@@ -24,6 +24,9 @@ namespace Wizards
 		private Texture2D texture;
 		private Vector2 position;
 		private int spritenum = 6;
+        private int acceleration;
+        private int maxspeed;
+        private float curspeed;
 
 
 		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
@@ -44,54 +47,65 @@ namespace Wizards
 					//TODO Add Jump funktion
 				action = Actions.Jump;
 				}
+            position.X += curspeed;
 
-			if (newState.IsKeyDown (Right)) {
+            if (Math.Abs(curspeed) != maxspeed)
+            {
+                if (newState.IsKeyDown(Right))
+                {
 
-				position.X += 5;
-				action = Actions.Springahöger;
-			}
+                    curspeed = Math.Min(curspeed + acceleration, maxspeed);
+                    action = Actions.Right;
+                }
 
-			if (newState.IsKeyDown (Left)) {
+                if (newState.IsKeyDown(Left))
+                {
+                    curspeed = Math.Max(curspeed - acceleration, -maxspeed);
+                    action = Actions.Left;
+                }
 
-				position.X -= 5;
-				action = Actions.Springavänster;
-			}
+                if (newState.IsKeyDown(Spell))
+                {
+                    //TODO Add kasta spells funktion
+                    action = Actions.Spell;
+                }
 
-			if (newState.IsKeyDown (Trollformel)) {
-				//TODO Add kasta spells funktion
-				action = Actions.Kastamagi;
-			}
+                if (newState.IsKeyDown(Melee))
+                {
+                    //TODO Add slag funktion
+                    action = Actions.Melee;
+                }
+            }
+            else
+            {
+                curspeed = curspeed / 2;
+            }
 
-			if (newState.IsKeyDown (Slash)) {
-				//TODO Add slag funktion
-				action = Actions.Slash;
-			} 
 
+           /*Rectangle myRect = new Rectangle(
+               Convert.ToInt32(position.X),
+               Convert.ToInt32(position.Y),
+               texture.Width,
+               (texture.Height / spritenum));
 
-			Rectangle myRect = new Rectangle(
-				Convert.ToInt32(position.X),
-				Convert.ToInt32(position.Y),
-				texture.Width,
-				(texture.Height / hurmangasprite));
-
-			foreach (var tile in world.tiles)
-			{
-				while (tile.isColliding(myRect))
-				{
-					collided = true;
-					if (action == Actions.Jumping || action == Actions.Jumping)
-					{
-						position.Y--;
-						myRect = new Rectangle ( Convert.ToInt32(position.X),
-							Convert.ToInt32(position.Y), 
-							texture.Width, (texture.Height / hurmangasprite));
-					}
-				}
-			}
-		if (collided)
+           foreach (var tile in world.tiles)
+           {
+               while (tile.isColliding(myRect))
+               {
+                   collided = true;
+                   if (action == Actions.Jump || action == Actions.Jump)
+                   {
+                       position.Y--;
+                       myRect = new Rectangle ( Convert.ToInt32(position.X),
+                           Convert.ToInt32(position.Y), 
+                           texture.Width, (texture.Height / spritenum));
+                   }
+               }
+           }*/
+		/*if (collided)
 		{
 			action = Actions.Still;
-		}
+		}*/
 
 
 
@@ -112,25 +126,26 @@ namespace Wizards
 					texture.Width, spriteHeight), Color.White);
 
 				break;
-			case (Actions.Slash):
+			case (Actions.Melee):
 				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
-			case (Actions.Kastamagi):
+			case (Actions.Spell):
 				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight*3,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
 
-			case (Actions.Springahöger):
+			case (Actions.Right):
 				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 4,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
-			case (Actions.Springavänster):
+			case (Actions.Left):
 				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 5,
 					texture.Width, spriteHeight), Color.White);
+                break;
 			}
 		}
 	}

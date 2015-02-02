@@ -22,12 +22,14 @@ namespace Wizards
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
+        public player p1; // Player 1
+        world world; //The map
 
 		public Game1 ()
 		{
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";	            
-			graphics.IsFullScreen = true;		
+			graphics.IsFullScreen = false;		
 		}
 
 
@@ -44,7 +46,19 @@ namespace Wizards
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch (GraphicsDevice);
 
-			//TODO: use this.Content to load your game content here 
+            p1 = new player(Content.Load<Texture2D>("images/players/sprite"),
+            new Vector2(100, 100),
+            Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
+
+            List<tiles> tiles = new List<tiles>();
+            Texture2D squareTexture = Content.Load<Texture2D>("images/world/square");
+
+            for (int i = 0; i < (Window.ClientBounds.Width / squareTexture.Width); i++)
+            {
+                tiles.Add(new tiles(squareTexture,
+                    new Vector2(i * squareTexture.Width, Window.ClientBounds.Height - squareTexture.Height)));
+            }
+            world = new world(tiles);
 		}
 			
 		protected override void Update (GameTime gameTime)
@@ -53,7 +67,7 @@ namespace Wizards
 			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
 				Exit ();
 			}
-			// TODO: Add your update logic here			
+            p1.Update(null, world);			
 			base.Update (gameTime);
 		}
 			
@@ -61,8 +75,11 @@ namespace Wizards
 		protected override void Draw (GameTime gameTime)
 		{
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
-		
-			//TODO: Add your drawing code here
+
+            spriteBatch.Begin();
+            p1.Draw(spriteBatch);
+            world.Draw(spriteBatch);
+            spriteBatch.End();
             
 			base.Draw (gameTime);
 		}

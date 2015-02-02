@@ -23,7 +23,7 @@ namespace Wizards
 		private Keys Melee;
 		private Texture2D texture;
 		private Vector2 position;
-		private int spritenum = 6;
+		private int spritenum = 3;
         private int acceleration = 1;
         private int maxspeed = 25;
         private float curspeed = 0;
@@ -78,15 +78,17 @@ namespace Wizards
             }
             else
             {
-                curspeed = curspeed / 2;
+                curspeed = curspeed / 2;   
             }
 
 
-           /*Rectangle myRect = new Rectangle(
+           Rectangle myRect = new Rectangle(
                Convert.ToInt32(position.X),
                Convert.ToInt32(position.Y),
                texture.Width,
                (texture.Height / spritenum));
+
+           bool collided = false;
 
            foreach (var tile in world.tiles)
            {
@@ -101,11 +103,11 @@ namespace Wizards
                            texture.Width, (texture.Height / spritenum));
                    }
                }
-           }*/
-		/*if (collided)
-		{
-			action = Actions.Still;
-		}*/
+           }
+           if (collided)
+           {
+               action = Actions.Still;
+           }
 
 
 
@@ -113,7 +115,7 @@ namespace Wizards
 		public void Draw(SpriteBatch spriteBatch)
 		{
 
-			int spriteHeight = texture.Height / 3; 
+			int spriteHeight = texture.Height / spritenum; 
 			switch (action)
 			{
 			case (Actions.Still):
@@ -132,18 +134,18 @@ namespace Wizards
 
 				break;
 			case (Actions.Spell):
-				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight*3,
+				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight*2,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
 
 			case (Actions.Right):
-				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 4,
+				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 1,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
 			case (Actions.Left):
-				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 5,
+				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 1,
 					texture.Width, spriteHeight), Color.White);
                 break;
 			}

@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-    class physobj
+   /* class physobj
     {
         protected bool isAlive = true;
 
@@ -31,5 +31,5 @@ namespace Wizards
             set { isAlive value; }
         }
         
-    }
+    }*/
 }

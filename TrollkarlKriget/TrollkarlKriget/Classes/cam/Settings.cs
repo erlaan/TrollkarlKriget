@@ -11,25 +11,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
 namespace Wizards
 {
-	public class world
-	{
-		public List <tiles> tiles;
-		public float Gravittion = 20;
-
-		public world(List<tiles> tiles)
-		{
-			this.tiles = tiles;
-		}
-		public void Draw(SpriteBatch spriteBatch)
-		{
-			foreach (var tile in tiles)
-			{
-				tile.Draw(spriteBatch);
-			}
-		}
-	}
+    public class Settings
+    {
+        public static int gridsize = 64;
+        public Settings()
+        {
+        }
+    }
 }
-

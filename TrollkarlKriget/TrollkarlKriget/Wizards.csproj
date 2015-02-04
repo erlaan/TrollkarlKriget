@@ -109,13 +109,15 @@
   <ItemGroup>
     <Compile Include="actions.cs" />
     <Compile Include="Classes\baseobj.cs" />
+    <Compile Include="Classes\cam\Camera.cs" />
+    <Compile Include="Classes\cam\Settings.cs" />
     <Compile Include="Classes\mage_fire.cs" />
-    <Compile Include="Classes\tiles.cs" />
+    <Compile Include="Classes\cam\tiles.cs" />
     <Compile Include="Classes\physobj.cs" />
     <Compile Include="Classes\mage_ice.cs" />
     <Compile Include="Classes\mage_arcane.cs" />
     <Compile Include="Classes\player.cs" />
-    <Compile Include="Classes\world.cs" />
+    <Compile Include="Classes\cam\world.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

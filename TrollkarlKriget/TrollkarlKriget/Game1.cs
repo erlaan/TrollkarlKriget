@@ -23,7 +23,8 @@ namespace Wizards
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
         public player p1; // Player 1
-        world world; //The map
+        World world; //The map
+        Camera cam;
 
 		public Game1 ()
 		{
@@ -49,16 +50,10 @@ namespace Wizards
             p1 = new player(Content.Load<Texture2D>("images/players/sprite"),
             new Vector2(100, 100),
             Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
+            Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 
-            List<tiles> tiles = new List<tiles>();
-            Texture2D squareTexture = Content.Load<Texture2D>("images/world/square");
-
-            for (int i = 0; i < (Window.ClientBounds.Width / squareTexture.Width); i++)
-            {
-                tiles.Add(new tiles(squareTexture,
-                    new Vector2(i * squareTexture.Width, Window.ClientBounds.Height - squareTexture.Height)));
-            }
-            world = new world(tiles);
+            cam = new Camera();
+            world = new World(tile_texture); 
 		}
 			
 		protected override void Update (GameTime gameTime)
@@ -67,7 +62,8 @@ namespace Wizards
 			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
 				Exit ();
 			}
-            p1.Update(null, world);			
+            p1.Update(null, world);
+            cam.Update ();
 			base.Update (gameTime);
 		}
 			
@@ -77,8 +73,8 @@ namespace Wizards
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
 
             spriteBatch.Begin();
+            world.Draw(spriteBatch, cam);
             p1.Draw(spriteBatch);
-            world.Draw(spriteBatch);
             spriteBatch.End();
             
 			base.Draw (gameTime);

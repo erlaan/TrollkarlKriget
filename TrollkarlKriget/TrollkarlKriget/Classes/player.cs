@@ -42,7 +42,7 @@ namespace Wizards
             this.mAction = false;
 			action = Actions.Still;
 		}
-		public void Update(player otherplayer, world world)
+		public void Update(player otherplayer, World world)
 		{
 			KeyboardState newState = Keyboard.GetState (); 
 			if (newState.IsKeyDown(Jump)){
@@ -97,7 +97,7 @@ namespace Wizards
 
            bool collided = false;
 
-           foreach (var tile in world.tiles)
+         /*  foreach (var tile in world.map)
            {
                while (tile.isColliding(myRect))
                {
@@ -114,7 +114,7 @@ namespace Wizards
            if (collided)
            {
                action = Actions.Still;
-           }
+           }*/
 
 
 

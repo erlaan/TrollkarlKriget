@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\players\sprite.xnb</Output>
-      <Time>2015-02-04T13:45:27.3779509+01:00</Time>
+      <Output>C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\players\sprite.xnb</Output>
+      <Time>2015-02-02T20:57:12.294682+01:00</Time>
     </Item>
     <Item>
       <Source>images\world\square.png</Source>
@@ -16,8 +16,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\world\square.xnb</Output>
-      <Time>2015-02-04T13:45:27.379951+01:00</Time>
+      <Output>C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\world\square.xnb</Output>
+      <Time>2015-02-04T14:09:27.1251507+01:00</Time>
+    </Item>
+    <Item>
+      <Source>images\world\cross.png</Source>
+      <Name>images\world\cross</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\world\cross.xnb</Output>
+      <Time>2015-02-04T14:09:27.11215+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -25,10 +34,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKrigetContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKrigetContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKrigetContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKrigetContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

@@ -48,7 +48,7 @@ namespace Wizards
             this.endSize = endSize;
         }
 
-        public void Update(world world, GameTime gametime)
+        public void Update(World world, GameTime gametime)
         {
             this.pos += speed;
 

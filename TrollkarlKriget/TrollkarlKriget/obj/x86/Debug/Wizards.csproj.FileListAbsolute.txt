@@ -1,8 +1,0 @@
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\players\sprite.xnb
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\world\square.xnb
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\TrollkarlKriget.exe
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\TrollkarlKriget.pdb
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\Wizards.csprojResolveAssemblyReference.cache
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\TrollkarlKriget.exe
-C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\TrollkarlKriget.pdb

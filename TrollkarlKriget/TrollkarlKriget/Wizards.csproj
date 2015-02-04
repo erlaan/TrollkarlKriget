@@ -110,10 +110,9 @@
     <Compile Include="actions.cs" />
     <Compile Include="Classes\baseobj.cs" />
     <Compile Include="Classes\cam\Camera.cs" />
-    <Compile Include="Classes\cam\Settings.cs" />
-    <Compile Include="Classes\cam\tabort.cs" />
     <Compile Include="Classes\mage_fire.cs" />
     <Compile Include="Classes\cam\tiles.cs" />
+    <Compile Include="Classes\particle.cs" />
     <Compile Include="Classes\physobj.cs" />
     <Compile Include="Classes\mage_ice.cs" />
     <Compile Include="Classes\mage_arcane.cs" />

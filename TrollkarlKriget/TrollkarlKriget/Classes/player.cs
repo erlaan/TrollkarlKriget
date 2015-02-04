@@ -72,6 +72,7 @@ namespace Wizards
                 if (newState.IsKeyDown(Spell))
                 {
                     //TODO Add kasta spells funktion
+                    worldParticles.Add
                     action = Actions.Spell;
                 }
 

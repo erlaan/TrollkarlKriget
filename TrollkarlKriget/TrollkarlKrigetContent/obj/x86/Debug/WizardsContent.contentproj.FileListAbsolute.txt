@@ -1,1 +1,2 @@
 C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKrigetContent\obj\x86\Debug\WizardsContent.contentprojResolveAssemblyReference.cache
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKrigetContent\obj\x86\Debug\WizardsContent.contentprojResolveAssemblyReference.cache

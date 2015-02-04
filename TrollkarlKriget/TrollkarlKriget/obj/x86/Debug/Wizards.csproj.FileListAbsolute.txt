@@ -8,3 +8,9 @@ C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\
 C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\TrollkarlKriget.pdb
 C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\players\sprite.xnb
 C:\Users\nti\programing\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\world\square.xnb
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\players\sprite.xnb
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\Content\images\world\square.xnb
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\TrollkarlKriget.exe
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\bin\x86\Debug\TrollkarlKriget.pdb
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\TrollkarlKriget.exe
+C:\Users\nti\Documents\GitHub\TrollkarlKrigetFN\TrollkarlKriget\TrollkarlKriget\TrollkarlKriget\obj\x86\Debug\TrollkarlKriget.pdb

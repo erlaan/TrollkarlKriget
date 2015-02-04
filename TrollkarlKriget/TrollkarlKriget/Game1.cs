@@ -23,7 +23,8 @@ namespace Wizards
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
         public player p1; // Player 1
-        world world; //The map
+        world world; //The map   
+        public List<particle> worldParticles;
 
 		public Game1 ()
 		{
@@ -79,6 +80,10 @@ namespace Wizards
             spriteBatch.Begin();
             p1.Draw(spriteBatch);
             world.Draw(spriteBatch);
+            foreach (particle Particle in worldParticles)
+            {
+                Particle.Draw(spriteBatch);
+            }
             spriteBatch.End();
             
 			base.Draw (gameTime);

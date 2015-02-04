@@ -25,6 +25,7 @@ namespace Wizards
         public player p1; // Player 1
         World world; //The map
         Camera cam;
+        private bool loaded = false;
 
 		public Game1 ()
 		{
@@ -53,7 +54,9 @@ namespace Wizards
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 
             cam = new Camera();
-            world = new World(tile_texture); 
+            world = new World(tile_texture);
+            world.firesprite = Content.Load<Texture2D>("images/flamesprite");
+            loaded = true;
 		}
 			
 		protected override void Update (GameTime gameTime)
@@ -62,7 +65,15 @@ namespace Wizards
 			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
 				Exit ();
 			}
-            p1.Update(null, world);
+            p1.Update(null, world, gameTime);
+            List<particle> newlist = new List<particle>();
+            foreach (particle part in world.worldParticles)
+            {
+                part.Update(world, gameTime);
+                if (!(part.endTime<=gameTime.TotalGameTime.TotalMilliseconds))
+                newlist.Add(part);
+            }
+            world.worldParticles = newlist;
             cam.Update (gameTime,p1);
 			base.Update (gameTime);
 		}

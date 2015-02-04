@@ -19,7 +19,10 @@ namespace Wizards
         int worldSize;
         Texture2D texture;
         public Tile[,] map;
+        public List<particle> worldParticles = new List<particle>();
+        public Texture2D firesprite;
         int numberOfTilesInTexture;
+        
 
         public World(Texture2D texture)
         {
@@ -73,6 +76,10 @@ namespace Wizards
 
                     }
                 }
+            }
+            foreach (particle part in worldParticles)
+            {
+                part.Draw(spriteBatch);
             }
 
         }

@@ -42,7 +42,7 @@ namespace Wizards
             this.mAction = false;
 			action = Actions.Still;
 		}
-		public void Update(player otherplayer, World world)
+		public void Update(player otherplayer,  World world, GameTime gameTime)
 		{
 			KeyboardState newState = Keyboard.GetState (); 
 			if (newState.IsKeyDown(Jump)){
@@ -72,7 +72,12 @@ namespace Wizards
                 if (newState.IsKeyDown(Spell))
                 {
                     //TODO Add kasta spells funktion
-                    
+                    world.worldParticles.Add(new particle(this.position, new Vector2(this.curspeed, 0), world.firesprite,
+                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+150000, 
+                        Color.White, Color.Transparent, 
+                        new Vector2(100, 100), new Vector2(1000, 1000), 
+                        new Vector2(0, 0), new Vector2(0, 0),
+                        new Vector2(-(float)0.0025, (float)0.0025), new Vector2(0, -(float)0)));
                     action = Actions.Spell;
                 }
 

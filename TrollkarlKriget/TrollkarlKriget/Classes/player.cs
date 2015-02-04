@@ -58,10 +58,14 @@ namespace Wizards
                     action = Actions.Right;
                 }
 
-                if (newState.IsKeyDown(Left))
+                else if (newState.IsKeyDown(Left))
                 {
                     curspeed = Math.Max(curspeed - acceleration, -maxspeed);
                     action = Actions.Left;
+                }
+                else
+                {
+                    curspeed = curspeed / 2;
                 }
 
                 if (newState.IsKeyDown(Spell))
@@ -76,10 +80,7 @@ namespace Wizards
                     action = Actions.Melee;
                 }
             }
-            else
-            {
-                curspeed = curspeed / 2;   
-            }
+
 
 
            Rectangle myRect = new Rectangle(

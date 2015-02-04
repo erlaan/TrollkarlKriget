@@ -1,3 +1,0 @@
-Content\images\players\sprite.xnb
-Content\images\world\square.xnb
-Content\images\world\cross.xnb

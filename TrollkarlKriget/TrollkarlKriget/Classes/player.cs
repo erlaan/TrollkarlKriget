@@ -27,6 +27,7 @@ namespace Wizards
         private int acceleration = 1;
         private int maxspeed = 25;
         private float curspeed = 0;
+        private bool mAction;
 
 
 		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
@@ -38,6 +39,7 @@ namespace Wizards
 			this.Left = left;
 			this.Spell = spell;
 			this.Melee = melee;
+            this.mAction = false;
 			action = Actions.Still;
 		}
 		public void Update(player otherplayer, world world)
@@ -56,17 +58,16 @@ namespace Wizards
 
                     curspeed = Math.Min(curspeed + acceleration, maxspeed);
                     action = Actions.Right;
+                    mAction = true;
                 }
 
                 else if (newState.IsKeyDown(Left))
                 {
                     curspeed = Math.Max(curspeed - acceleration, -maxspeed);
                     action = Actions.Left;
+                    mAction = true;
                 }
-                else
-                {
-                    curspeed = curspeed / 2;
-                }
+
 
                 if (newState.IsKeyDown(Spell))
                 {
@@ -81,6 +82,11 @@ namespace Wizards
                 }
             }
 
+            if (!mAction)
+            {
+                curspeed = curspeed*10 / 11;
+            }
+            mAction = false;
 
 
            Rectangle myRect = new Rectangle(

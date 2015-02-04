@@ -63,7 +63,7 @@ namespace Wizards
 				Exit ();
 			}
             p1.Update(null, world);
-            cam.Update ();
+            cam.Update (gameTime,p1);
 			base.Update (gameTime);
 		}
 			
@@ -74,7 +74,7 @@ namespace Wizards
 
             spriteBatch.Begin();
             world.Draw(spriteBatch, cam);
-            p1.Draw(spriteBatch);
+            p1.Draw(spriteBatch, cam);
             spriteBatch.End();
             
 			base.Draw (gameTime);

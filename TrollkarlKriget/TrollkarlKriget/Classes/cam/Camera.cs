@@ -14,7 +14,7 @@ namespace Wizards
     {
         public int width;
         public int height;
-
+        Vector2 posX;
         float xSpeed;
         float ySpeed;
 
@@ -31,40 +31,11 @@ namespace Wizards
 
         }
 
-        public void Update()
+        public void Update(GameTime gameTime, player player)
         {
-
-            KeyboardState newState = Keyboard.GetState();
-
-            if (newState.IsKeyDown(Keys.Up))
-            {
-
-                ySpeed -= 0.5f;
-            }
-
-            if (newState.IsKeyDown(Keys.Down))
-            {
-
-                ySpeed += 0.5f;
-            }
-
-
-            if (newState.IsKeyDown(Keys.Left))
-            {
-                xSpeed -= 0.5f;
-
-            }
-
-
-            if (newState.IsKeyDown(Keys.Right))
-            {
-                xSpeed += 0.5f;
-
-
-            }
-
-            position.X += xSpeed;
-            position.Y += ySpeed;
+            
+            position.X = player.position.X - 200;
+            position.Y = player.position.Y - 200;
         }
     }
 }

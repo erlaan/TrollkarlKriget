@@ -22,7 +22,7 @@ namespace Wizards
 		private Keys Spell;
 		private Keys Melee;
 		private Texture2D texture;
-		private Vector2 position;
+		public Vector2 position;
 		private int spritenum = 3;
         private int acceleration = 1;
         private int maxspeed = 25;
@@ -119,40 +119,41 @@ namespace Wizards
 
 
 		}
-		public void Draw(SpriteBatch spriteBatch)
+		public void Draw(SpriteBatch spriteBatch, Camera cam)
 		{
+            Vector2 drawPos = position - cam.position;
 
 			int spriteHeight = texture.Height / spritenum; 
 			switch (action)
 			{
 			case (Actions.Still):
-				spriteBatch.Draw(texture, position, new Rectangle(0,0,
+				spriteBatch.Draw(texture, drawPos, new Rectangle(0,0,
 					texture.Width, spriteHeight), Color.White);
 				break;
 
 			case (Actions.Jump):
-				spriteBatch.Draw(texture, position, new Rectangle(0,spriteHeight*2,
+				spriteBatch.Draw(texture, drawPos, new Rectangle(0,spriteHeight*2,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
 			case (Actions.Melee):
-				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight,
+				spriteBatch.Draw(texture, drawPos, new Rectangle(0, spriteHeight,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
 			case (Actions.Spell):
-				spriteBatch.Draw(texture, position, new Rectangle(0, spriteHeight*2,
+				spriteBatch.Draw(texture, drawPos, new Rectangle(0, spriteHeight*2,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
 
 			case (Actions.Right):
-				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 1,
+				spriteBatch.Draw (texture, drawPos, new Rectangle (0, spriteHeight * 1,
 					texture.Width, spriteHeight), Color.White);
 
 				break;
 			case (Actions.Left):
-				spriteBatch.Draw (texture, position, new Rectangle (0, spriteHeight * 1,
+				spriteBatch.Draw (texture, drawPos, new Rectangle (0, spriteHeight * 1,
 					texture.Width, spriteHeight), Color.White);
                 break;
 			}

@@ -21,6 +21,12 @@ namespace Wizards
         private Texture2D texture;
         private double initTime;
         public double endTime;
+        private double initRoll;
+        private double endRoll;
+        private double initScale;
+        private double endScale;
+        private double scale;
+        private double roll;
         private double timeLength;
 
         private Color color;
@@ -29,17 +35,15 @@ namespace Wizards
         private Vector2 endResistance;
         private Vector2 initGravity;
         private Vector2 endGravity;
-        private Vector2 initSize;
-        private Vector2 endSize;
 
         private Color initColor;
         private Color endColor;
          
         public particle(Vector2 pos, Vector2 speed, Texture2D texture,
             double initTime, double endTime, Color initColor, 
-            Color endColor, Vector2 initSize, Vector2 endSize,
+            Color endColor, double initScale, double endScale,
             Vector2 initResistance, Vector2 endResistance,
-            Vector2 initGravity, Vector2 endGravity)
+            Vector2 initGravity, Vector2 endGravity, double initRoll, double endRoll)
         {
             this.pos = pos;
             this.speed = speed;
@@ -50,12 +54,14 @@ namespace Wizards
             this.initColor = initColor;
             this.color = initColor;
             this.endColor = endColor;
-            this.initSize = initSize;
-            this.endSize = endSize;
+            this.initScale = initScale;
+            this.endScale = endScale;
             this.initResistance = initResistance;
             this.endResistance = endResistance;
             this.initGravity = initGravity;
             this.endGravity = endGravity;
+            this.initRoll = initRoll;
+            this.endRoll = endRoll;
         }
 
         public void Update(World world, GameTime gametime)
@@ -80,8 +86,9 @@ namespace Wizards
             this.color.A = (byte)((float)initColor.A * tempTime + (float)endColor.A * (1 - tempTime)); 
             //Räkna ut tidens påverkan på färgen
 
-            this.size.X = initSize.X * tempTime + endSize.X * (1 - tempTime);
-            this.size.Y = initSize.Y * tempTime + endSize.Y * (1 - tempTime); 
+            this.roll = initRoll * tempTime + endRoll * (1 - tempTime);
+
+            this.scale = initScale * tempTime + endScale * (1 - tempTime);
             // Räkna ut tidens påverkan på storleken
         }
 
@@ -90,7 +97,7 @@ namespace Wizards
             spriteBatch.End();
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
             spriteBatch.Draw(texture, pos, new Rectangle(0, 0,
-    (int)texture.Height, (int)texture.Width), this.color, 0, new Vector2(0,0), 1, SpriteEffects.None, 0f);
+    (int)texture.Width, (int)texture.Height), this.color, (float)this.roll, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2((float)this.scale,(float)this.scale), SpriteEffects.None, 0f);
             spriteBatch.End();
             spriteBatch.Begin();
         }

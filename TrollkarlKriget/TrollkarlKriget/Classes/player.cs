@@ -72,12 +72,23 @@ namespace Wizards
                 if (newState.IsKeyDown(Spell))
                 {
                     //TODO Add kasta spells funktion
-                    world.worldParticles.Add(new particle(this.position, new Vector2(this.curspeed, 0), world.firesprite,
-                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+150000, 
+                    Random rand = new Random();
+                    double divisor = 16000;
+                    double num = Math.Sin(rand.NextDouble()*MathHelper.TwoPi)/divisor;
+                    double num2 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor;
+                    double num3 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor; 
+                    double num4 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor;
+                    double num5 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi;
+                    double num6 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi * 4;
+
+                    world.worldParticles.Add(new particle(this.position + new Vector2(100,175), new Vector2(this.curspeed, 0), world.firesprite,
+                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+15000, 
                         Color.White, Color.Transparent, 
-                        new Vector2(100, 100), new Vector2(1000, 1000), 
-                        new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(-(float)0.15, (float)0.15), new Vector2(1, -(float)1)));
+                        1, 10, //Skala
+                        new Vector2(0, 0), new Vector2(0, 0), // Luftmotstånd
+                        new Vector2((float)num, (float)num2), // Gravitation
+                        new Vector2((float)num3, (float)num4), // Slutgravitation
+                        num5, num6));
                     action = Actions.Spell;
                 }
 

@@ -25,7 +25,6 @@ namespace Wizards
         public player p1; // Player 1
         World world; //The map
         Camera cam;
-        private bool loaded = false;
 
 		public Game1 ()
 		{
@@ -49,14 +48,13 @@ namespace Wizards
 			spriteBatch = new SpriteBatch (GraphicsDevice);
 
             p1 = new player(Content.Load<Texture2D>("images/players/sprite"),
-            new Vector2(100, 100),
+            new Vector2(0, 0),
             Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 
             cam = new Camera();
             world = new World(tile_texture);
             world.firesprite = Content.Load<Texture2D>("images/flamesprite");
-            loaded = true;
 		}
 			
 		protected override void Update (GameTime gameTime)

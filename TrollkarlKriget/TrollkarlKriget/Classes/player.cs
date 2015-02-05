@@ -77,7 +77,7 @@ namespace Wizards
                         Color.White, Color.Transparent, 
                         new Vector2(100, 100), new Vector2(1000, 1000), 
                         new Vector2(0, 0), new Vector2(0, 0),
-                        new Vector2(-(float)0.0025, (float)0.0025), new Vector2(0, -(float)0)));
+                        new Vector2(-(float)0.15, (float)0.15), new Vector2(1, -(float)1)));
                     action = Actions.Spell;
                 }
 

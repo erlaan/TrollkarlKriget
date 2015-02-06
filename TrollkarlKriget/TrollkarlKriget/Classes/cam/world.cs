@@ -26,7 +26,6 @@ namespace Wizards
         int numberOfTilesInTexture;
         private System.Drawing.Color myColor;
         public int gravity;
-        public Camera cam;
 
         public World(Texture2D texture)
         {
@@ -54,6 +53,14 @@ namespace Wizards
                     if (myColor == System.Drawing.Color.FromArgb(255, 0, 0))
                     {
                         map[x, y] = new Tile(3, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                    }
+                    else if (myColor == System.Drawing.Color.FromArgb(0, 0, 0))
+                    {
+                        map[x, y] = new Tile(1, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                    }
+                    else
+                    {
+                        map[x, y] = new Tile(2, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
                     }
                 }
             }

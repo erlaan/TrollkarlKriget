@@ -53,7 +53,7 @@ namespace Wizards
 			spriteBatch = new SpriteBatch (GraphicsDevice);
 
             p1 = new player(Content.Load<Texture2D>("images/players/sprite"),
-            new Vector2(0, 0),
+            new Vector2(0, 100),
             Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 

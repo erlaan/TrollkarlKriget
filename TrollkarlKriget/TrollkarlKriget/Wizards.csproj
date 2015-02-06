@@ -110,7 +110,8 @@
   <ItemGroup>
     <Compile Include="actions.cs" />
     <Compile Include="Classes\baseobj.cs" />
-    <Compile Include="Classes\cam\Camera.cs" />
+    <Compile Include="Classes\cam\camera.cs" />
+    <Compile Include="Classes\cam\mouse.cs" />
     <Compile Include="Classes\mage_fire.cs" />
     <Compile Include="Classes\cam\tiles.cs" />
     <Compile Include="Classes\particle.cs" />

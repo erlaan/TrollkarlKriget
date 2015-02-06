@@ -25,6 +25,7 @@ namespace Wizards
         public player p1; // Player 1
         World world; //The map
         Camera cam;
+        Cursor cursor;
 
 		public Game1 ()
 		{
@@ -56,6 +57,7 @@ namespace Wizards
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 
             cam = new Camera();
+            cursor = new Cursor(Content.Load<Texture2D>("images/cursor"));
             world = new World(tile_texture);
             world.firesprite = Content.Load<Texture2D>("images/flamesprite");
 		}
@@ -76,6 +78,7 @@ namespace Wizards
             }
             world.worldParticles = newlist;
             cam.Update (gameTime,p1);
+            cursor.Update(cam, world);
 			base.Update (gameTime);
 		}
 			
@@ -87,6 +90,7 @@ namespace Wizards
             spriteBatch.Begin();
             world.Draw(spriteBatch, cam);
             p1.Draw(spriteBatch, cam);
+            cursor.Draw(spriteBatch);
             spriteBatch.End();
             
 			base.Draw (gameTime);

@@ -14,9 +14,6 @@ namespace Wizards
     {
         public int width;
         public int height;
-        Vector2 posX;
-        float xSpeed;
-        float ySpeed;
 
         public Vector2 position;
 
@@ -25,9 +22,6 @@ namespace Wizards
             position = new Vector2(0, 0);
             width = 12;
             height = 6;
-
-            xSpeed = 0;
-            ySpeed = 0;
 
         }
 

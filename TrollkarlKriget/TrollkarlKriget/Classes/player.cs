@@ -110,12 +110,10 @@ namespace Wizards
                Convert.ToInt32(position.Y),
                texture.Width,
                (texture.Height / spritenum));
-
-           if (collided)
+           if (curspeed == 0)
            {
                action = Actions.Still;
-           } */ 
-
+           }
 
 
 		}

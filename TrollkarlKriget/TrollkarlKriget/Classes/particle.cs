@@ -83,11 +83,6 @@ namespace Wizards
             // Kalkylera luftmotstånd
 
 
-            //this.speed.X -= initResistance.X * tempTime + endResistance.X * (1 - tempTime);
-            //this.speed.Y -= initResistance.Y * tempTime + endResistance.Y * (1 - tempTime); 
-            //Räkna ut luftresistansens påverkan på hastigheten
-
-
             this.color.R = (byte)((float)initColor.R * tempTime + (float)endColor.R * (1 - tempTime)); 
             this.color.G = (byte)((float)initColor.G * tempTime + (float)endColor.G * (1 - tempTime));
             this.color.B = (byte)((float)initColor.B * tempTime + (float)endColor.B * (1 - tempTime));

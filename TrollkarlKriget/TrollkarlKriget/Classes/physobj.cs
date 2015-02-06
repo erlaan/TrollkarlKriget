@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-   class physobj : baseobj
+    public class physobj : baseobj
     {
 
         protected bool isAlive = true;

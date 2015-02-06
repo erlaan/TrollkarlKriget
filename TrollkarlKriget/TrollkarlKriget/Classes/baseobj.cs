@@ -16,7 +16,7 @@ namespace Wizards
     public abstract class baseobj
     {
         protected Texture2D texture;
-        protected Vector2 position;
+        public Vector2 position;
 
         public baseobj(Texture2D texture, Vector2 position)
         {

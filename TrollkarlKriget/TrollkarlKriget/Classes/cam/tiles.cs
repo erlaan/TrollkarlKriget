@@ -13,17 +13,15 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-    public class Tile : physobj
+    public class Tile : baseobj
     {
         bool isPassable;
         int type;
-        Vector2 position;
-        Texture2D texture;
         const int tileWidth = 64;
         int numberOfTilesInTexture;
 
 
-        public Tile(int tileType, Vector2 position, Texture2D texture) : base(texture, position)
+        public Tile(int tileType, Vector2 position, Texture2D texture) : base(texture, position)    
         {
             this.texture = texture;
             numberOfTilesInTexture = 1;
@@ -36,6 +34,21 @@ namespace Wizards
                 isPassable = true;
 
         }
+
+        public bool isColliding(Rectangle otherRect)
+        {
+            if (!isPassable)
+            {
+                Rectangle myRect = new Rectangle(
+                    Convert.ToInt32(position.X),
+                    Convert.ToInt32(position.Y),
+                    Convert.ToInt32(Width),
+                    Convert.ToInt32(Height));
+                return myRect.Intersects(otherRect);
+            }
+            return false;
+        }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 camOffset)
         {
 

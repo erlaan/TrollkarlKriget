@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-    public abstract class baseobj
+    public class baseobj
     {
         protected Texture2D texture;
         public Vector2 position;

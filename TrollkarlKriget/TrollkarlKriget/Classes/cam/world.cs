@@ -26,6 +26,7 @@ namespace Wizards
         int numberOfTilesInTexture;
         private System.Drawing.Color myColor;
         public int gravity;
+        public Camera cam;
 
         public World(Texture2D texture)
         {

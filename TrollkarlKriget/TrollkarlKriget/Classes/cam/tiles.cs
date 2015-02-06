@@ -24,7 +24,7 @@ namespace Wizards
         public Tile(int tileType, Vector2 position, Texture2D texture) : base(texture, position)    
         {
             this.texture = texture;
-            numberOfTilesInTexture = 1;
+            numberOfTilesInTexture = 4;
             this.type = tileType;
             this.position = position;
 

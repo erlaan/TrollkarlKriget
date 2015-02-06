@@ -25,41 +25,38 @@ namespace Wizards
         public Camera cam;
         int numberOfTilesInTexture;
         private System.Drawing.Color myColor;
-        
+        public int gravity;
+        public Camera cam;
 
         public World(Texture2D texture)
         {
-            worldSize = 100;
+            gravity = 9; 
+            
             this.texture = texture;
 
-            map = new Tile[worldSize, worldSize];
+            
 
             Random rnd = new Random();
 
-            numberOfTilesInTexture = 1;
+            numberOfTilesInTexture = 4;
 
-            Console.WriteLine(numberOfTilesInTexture); 
+            Bitmap level = new Bitmap("../../../../TrollkarlKrigetContent/images/world/level.png");
+
+            worldSize = level.Width;
+
+            map = new Tile[worldSize, worldSize];
 
             for (int x = 0; x < worldSize; x++)
             {
                 for (int y = 0; y < worldSize; y++)
                 {
-                    int type = rnd.Next(0, numberOfTilesInTexture);
-                    map[x, y] = new Tile(type, new Vector2(x * (texture.Width), y * (texture.Height)), texture);
-
+                    myColor = level.GetPixel(x, y);
+                    if (myColor == System.Drawing.Color.FromArgb(255, 0, 0))
+                    {
+                        map[x, y] = new Tile(3, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                    }
                 }
             }
-
-            //Bitmap level = new Bitmap("Content/images/world/level.png");
-
-            /*for (int x = 0; x < level.Width; x++)
-            {
-                for (int y = 0; y < level.Height; y++)
-                {
-                    myColor = level.GetPixel(x, y);
-                    if (myColor == System.Drawing.Color.FromArgb(255, 0, 0)) ; 
-                }
-            }*/
 
         }
 

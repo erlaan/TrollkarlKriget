@@ -20,16 +20,16 @@ namespace Wizards
         public Camera()
         {
             position = new Vector2(0, 0);
-            width = 12;
-            height = 6;
+            width = 20;
+            height = 10;
 
         }
 
         public void Update(GameTime gameTime, player player)
         {
             
-            position.X = player.position.X;
-            position.Y = player.position.Y - 200;
+            position.X = player.position.X - ((width * 64) / 2);
+            position.Y = player.position.Y -((height * 64) - 100);
         }
     }
 }

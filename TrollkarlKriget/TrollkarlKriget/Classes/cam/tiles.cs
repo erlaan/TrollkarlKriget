@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-    public class Tile
+    public class Tile : physobj
     {
         bool isPassable;
         int type;
@@ -22,7 +22,8 @@ namespace Wizards
         const int tileWidth = 64;
         int numberOfTilesInTexture;
 
-        public Tile(int tileType, Vector2 position, Texture2D texture)
+
+        public Tile(int tileType, Vector2 position, Texture2D texture) : base(texture, position)
         {
             this.texture = texture;
             numberOfTilesInTexture = 1;

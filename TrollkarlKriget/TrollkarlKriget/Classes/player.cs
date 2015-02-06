@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wizards
 {
-	public class player
+	public class player : physobj
 	{
 		private Actions action;
 		private Keys Jump;
@@ -21,16 +21,15 @@ namespace Wizards
 		private Keys Left;
 		private Keys Spell;
 		private Keys Melee;
-		private Texture2D texture;
-		public Vector2 position;
 		private int spritenum = 3;
         private int acceleration = 1;
-        private int maxspeed = 25;
+        private int maxspeed = 15;
         private float curspeed = 0;
         private bool mAction;
 
 
 		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
+            :  base (texture, position)
 		{
 			this.position = position;
 			this.texture = texture;
@@ -73,7 +72,7 @@ namespace Wizards
                 {
                     //TODO Add kasta spells funktion
                     Random rand = new Random();
-                    double divisor = 16000;
+                    double divisor = 16;
                     double num = Math.Sin(rand.NextDouble()*MathHelper.TwoPi)/divisor;
                     double num2 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor;
                     double num3 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor; 
@@ -82,10 +81,10 @@ namespace Wizards
                     double num6 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi * 4;
 
                     world.worldParticles.Add(new particle(this.position + new Vector2(100,175), new Vector2(this.curspeed, 0), world.firesprite,
-                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+15000, 
+                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+3500, 
                         Color.White, Color.Transparent, 
-                        1, 10, //Skala
-                        new Vector2(0, 0), new Vector2(0, 0), // Luftmotstånd
+                        1, 1, //Skala
+                        1, 0, // Luftmotstånd
                         new Vector2((float)num, (float)num2), // Gravitation
                         new Vector2((float)num3, (float)num4), // Slutgravitation
                         num5, num6));
@@ -112,22 +111,6 @@ namespace Wizards
                texture.Width,
                (texture.Height / spritenum));
 
-           bool collided = false;
-
-         /* foreach (var tile in world.map)
-           {
-               while (tile.isColliding(myRect))
-               {
-                   collided = true;
-                   if (action == Actions.Jump || action == Actions.Jump)
-                   {
-                       position.Y--;
-                       myRect = new Rectangle ( Convert.ToInt32(position.X),
-                           Convert.ToInt32(position.Y), 
-                           texture.Width, (texture.Height / spritenum));
-                   }
-               }
-           }
            if (collided)
            {
                action = Actions.Still;

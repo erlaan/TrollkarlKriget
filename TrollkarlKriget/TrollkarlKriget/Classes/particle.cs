@@ -17,7 +17,6 @@ namespace Wizards
     {
         private Vector2 pos;
         private Vector2 speed;
-        private Vector2 size;
         private Texture2D texture;
         private double initTime;
         public double endTime;
@@ -29,10 +28,11 @@ namespace Wizards
         private double roll;
         private double timeLength;
 
+        private float initResistance;
+        private float endResistance;
+
         private Color color;
 
-        private Vector2 initResistance;
-        private Vector2 endResistance;
         private Vector2 initGravity;
         private Vector2 endGravity;
 
@@ -42,8 +42,9 @@ namespace Wizards
         public particle(Vector2 pos, Vector2 speed, Texture2D texture,
             double initTime, double endTime, Color initColor, 
             Color endColor, double initScale, double endScale,
-            Vector2 initResistance, Vector2 endResistance,
-            Vector2 initGravity, Vector2 endGravity, double initRoll, double endRoll)
+            float initResistance, float endResistance,
+            Vector2 initGravity, Vector2 endGravity, 
+            double initRoll, double endRoll)
         {
             this.pos = pos;
             this.speed = speed;
@@ -72,8 +73,15 @@ namespace Wizards
             // Returnerar en float som går från 1 till 0 beroende på tidpunkten som den räknas ut; Används för alla init/end variabler i Update.
 
             this.speed.X += (initGravity.X * tempTime) + (endGravity.X * (1 - tempTime));
-            this.speed.Y += (initGravity.Y * tempTime) + (endGravity.Y * (1 - tempTime)); 
+            this.speed.Y += (initGravity.Y * tempTime) + (endGravity.Y * (1 - tempTime));
             // Räkna ut gravitationens påverkan på hastigheten
+
+            this.speed.X = (float)Math.Sqrt(Convert.ToDouble( (speed.X * speed.X) * 
+                (initResistance * tempTime + endResistance * (1-tempTime) ) ) ) * speed.X / Math.Abs(speed.X);
+            this.speed.Y = (float)Math.Sqrt(Convert.ToDouble( (speed.Y * speed.Y) *
+                (initResistance * tempTime + endResistance * (1 - tempTime)))) * speed.Y / Math.Abs(speed.Y);
+            // Kalkylera luftmotstånd
+
 
             //this.speed.X -= initResistance.X * tempTime + endResistance.X * (1 - tempTime);
             //this.speed.Y -= initResistance.Y * tempTime + endResistance.Y * (1 - tempTime); 

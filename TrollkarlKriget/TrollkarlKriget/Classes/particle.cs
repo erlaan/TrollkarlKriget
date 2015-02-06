@@ -95,11 +95,11 @@ namespace Wizards
             // Räkna ut tidens påverkan på storleken
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Camera cam)
         {
             spriteBatch.End();
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
-            spriteBatch.Draw(texture, pos, new Rectangle(0, 0,
+            spriteBatch.Draw(texture, pos - cam.position, new Rectangle(0, 0,
     (int)texture.Width, (int)texture.Height), this.color, (float)this.roll, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2((float)this.scale,(float)this.scale), SpriteEffects.None, 0f);
             spriteBatch.End();
             spriteBatch.Begin();

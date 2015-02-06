@@ -28,7 +28,7 @@ namespace Wizards
         public void Update(GameTime gameTime, player player)
         {
             
-            position.X = player.position.X - 200;
+            position.X = player.position.X;
             position.Y = player.position.Y - 200;
         }
     }

@@ -29,8 +29,11 @@ namespace Wizards
 		public Game1 ()
 		{
 			graphics = new GraphicsDeviceManager (this);
-			Content.RootDirectory = "Content";	            
-			graphics.IsFullScreen = false;		
+			Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = (int)(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width * 0.8);
+            graphics.PreferredBackBufferHeight = (int)(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height * 0.8);
+			graphics.IsFullScreen = false;
+            graphics.ApplyChanges();
 		}
 
 

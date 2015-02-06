@@ -79,7 +79,7 @@ namespace Wizards
             }
             foreach (particle part in worldParticles)
             {
-                part.Draw(spriteBatch);
+                part.Draw(spriteBatch, cam);
             }
 
         }

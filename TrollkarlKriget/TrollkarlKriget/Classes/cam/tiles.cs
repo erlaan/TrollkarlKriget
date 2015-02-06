@@ -17,8 +17,6 @@ namespace Wizards
     {
         bool isPassable;
         int type;
-        Vector2 position;
-        Texture2D texture;
         const int tileWidth = 64;
         int numberOfTilesInTexture;
 

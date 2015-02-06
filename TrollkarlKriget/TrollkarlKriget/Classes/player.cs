@@ -111,11 +111,11 @@ namespace Wizards
                texture.Width,
                (texture.Height / spritenum));
 
-           if (collided)
+   /*        if (collided)
            {
                action = Actions.Still;
-           } */ 
-
+           } 
+            */
 
 
 		}

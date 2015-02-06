@@ -80,11 +80,12 @@ namespace Wizards
                     double num5 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi;
                     double num6 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi * 4;
 
-                    world.worldParticles.Add(new particle(this.position + new Vector2(100,175), new Vector2(this.curspeed, 0), world.firesprite,
+                    world.worldParticles.Add(new particle(this.position + new Vector2(100,175), 
+                        new Vector2(this.curspeed, 0), world.firesprite,
                         gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+3500, 
                         Color.White, Color.Transparent, 
                         1, 1, //Skala
-                        1, 0, // Luftmotstånd
+                        1, 0.5f, // Luftmotstånd
                         new Vector2((float)num, (float)num2), // Gravitation
                         new Vector2((float)num3, (float)num4), // Slutgravitation
                         num5, num6));

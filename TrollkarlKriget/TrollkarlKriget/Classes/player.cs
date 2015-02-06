@@ -21,10 +21,10 @@ namespace Wizards
 		private Keys Left;
 		private Keys Spell;
 		private Keys Melee;
-		private int spritenum = 3;
+		private int spriteNum = 3;
         private int acceleration = 1;
-        private int maxspeed = 15;
-        private float curspeed = 0;
+        private int maxSpeed = 15;
+        private Vector2 curSpeed = new Vector2(0,0);
         private bool mAction;
 
 
@@ -43,56 +43,57 @@ namespace Wizards
 		}
 		public void Update(player otherplayer,  World world, GameTime gameTime)
 		{
-			KeyboardState newState = Keyboard.GetState (); 
-			if (newState.IsKeyDown(Jump)){
+			KeyboardState keyboardState = Keyboard.GetState();
+            MouseState mouseState = Mouse.GetState();
+			if (keyboardState.IsKeyDown(Jump)){
 					//TODO Add Jump funktion
 				action = Actions.Jump;
 				}
-            position.X += curspeed;
+            position.X += curSpeed.X;
 
-            if (Math.Abs(curspeed) != maxspeed)
+            if (Math.Abs(curSpeed.X) != maxSpeed)
             {
-                if (newState.IsKeyDown(Right))
+                if (keyboardState.IsKeyDown(Right))
                 {
 
-                    curspeed = Math.Min(curspeed + acceleration, maxspeed);
+                    curSpeed.X = Math.Min(curSpeed.X + acceleration, maxSpeed);
                     action = Actions.Right;
                     mAction = true;
                 }
 
-                else if (newState.IsKeyDown(Left))
+                else if (keyboardState.IsKeyDown(Left))
                 {
-                    curspeed = Math.Max(curspeed - acceleration, -maxspeed);
+                    curSpeed.X = Math.Max(curSpeed.X - acceleration, -maxSpeed);
                     action = Actions.Left;
                     mAction = true;
                 }
 
 
-                if (newState.IsKeyDown(Spell))
+                if (mouseState.LeftButton == ButtonState.Pressed)
                 {
                     //TODO Add kasta spells funktion
                     Random rand = new Random();
-                    double divisor = 16;
-                    double num = Math.Sin(rand.NextDouble()*MathHelper.TwoPi)/divisor;
-                    double num2 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor;
-                    double num3 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor; 
-                    double num4 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) / divisor;
-                    double num5 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi;
-                    double num6 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi * 4;
+                    double num1 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi;
+                    double num2 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi * 4;
+                    Vector2 spellDirection = new Vector2(
+                        mouseState.X - this.position.X - this.texture.Width/2 + world.cam.position.X,
+                        mouseState.Y - this.position.Y - this.texture.Height / this.spriteNum / 2 + world.cam.position.Y);
+                    spellDirection.Normalize();
 
-                    world.worldParticles.Add(new particle(this.position + new Vector2(100,175), 
-                        new Vector2(this.curspeed, 0), world.firesprite,
-                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+3500, 
+                    world.worldParticles.Add(new particle(spellDirection*24 + new Vector2(this.position.X + this.texture.Width/2 , this.position.Y + this.texture.Height / this.spriteNum / 2 ), 
+                        spellDirection*24 + this.curSpeed, world.firesprite,
+                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+1400, 
                         Color.White, Color.Transparent, 
-                        1, 1, //Skala
-                        1, 0.5f, // Luftmotstånd
-                        new Vector2((float)num, (float)num2), // Gravitation
-                        new Vector2((float)num3, (float)num4), // Slutgravitation
-                        num5, num6));
+                        1, 3, //Skala
+                        1, 0.99f, // Luftmotstånd
+                        new Vector2((float)0, (float)0), // Gravitation
+                        new Vector2((float)0, (float)0), // Slutgravitation
+                        num1, num2));
                     action = Actions.Spell;
                 }
 
-                if (newState.IsKeyDown(Melee))
+
+                if (keyboardState.IsKeyDown(Melee))
                 {
                     //TODO Add slag funktion
                     action = Actions.Melee;
@@ -101,7 +102,7 @@ namespace Wizards
 
             if (!mAction)
             {
-                curspeed = curspeed*10 / 11;
+                curSpeed.X = curSpeed.X*10 / 11;
             }
             mAction = false;
 
@@ -110,8 +111,8 @@ namespace Wizards
                Convert.ToInt32(position.X),
                Convert.ToInt32(position.Y),
                texture.Width,
-               (texture.Height / spritenum));
-           if (curspeed == 0)
+               (texture.Height / spriteNum));
+           if (curSpeed.X == 0)
            {
                action = Actions.Still;
            }
@@ -122,7 +123,7 @@ namespace Wizards
 		{
             Vector2 drawPos = position - cam.position;
 
-			int spriteHeight = texture.Height / spritenum; 
+			int spriteHeight = texture.Height / spriteNum; 
 			switch (action)
 			{
 			case (Actions.Still):

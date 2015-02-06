@@ -76,10 +76,16 @@ namespace Wizards
             this.speed.Y += (initGravity.Y * tempTime) + (endGravity.Y * (1 - tempTime));
             // Räkna ut gravitationens påverkan på hastigheten
 
-            this.speed.X = (float)Math.Sqrt(Convert.ToDouble( (speed.X * speed.X) * 
-                (initResistance * tempTime + endResistance * (1-tempTime) ) ) ) * speed.X / Math.Abs(speed.X);
-            this.speed.Y = (float)Math.Sqrt(Convert.ToDouble( (speed.Y * speed.Y) *
-                (initResistance * tempTime + endResistance * (1 - tempTime)))) * speed.Y / Math.Abs(speed.Y);
+            if (speed.X != 0)
+            {
+                this.speed.X = (float)Math.Sqrt(Convert.ToDouble((speed.X * speed.X) *
+                    (initResistance * tempTime + endResistance * (1 - tempTime)))) * speed.X / Math.Abs(speed.X);
+            }
+            if (speed.Y != 0)
+            {
+                this.speed.Y = (float)Math.Sqrt(Convert.ToDouble((speed.Y * speed.Y) *
+                    (initResistance * tempTime + endResistance * (1 - tempTime)))) * speed.Y / Math.Abs(speed.Y);
+            }
             // Kalkylera luftmotstånd
 
 

@@ -25,7 +25,7 @@ namespace Wizards
         public player p1; // Player 1
         enemy e1;
         World world; //The map
-        Camera cam;
+        public Camera cam;
         Cursor cursor;
 
 		public Game1 ()
@@ -64,6 +64,7 @@ namespace Wizards
             cursor = new Cursor(Content.Load<Texture2D>("images/cursor"));
             world = new World(tile_texture);
             world.firesprite = Content.Load<Texture2D>("images/flamesprite");
+            world.cam = cam;
 		}
 			
 		protected override void Update (GameTime gameTime)

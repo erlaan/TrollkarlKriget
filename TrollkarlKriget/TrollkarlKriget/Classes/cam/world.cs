@@ -22,6 +22,7 @@ namespace Wizards
         public Tile[,] map;
         public List<particle> worldParticles = new List<particle>();
         public Texture2D firesprite;
+        public Camera cam;
         int numberOfTilesInTexture;
         private System.Drawing.Color myColor;
         
@@ -49,16 +50,16 @@ namespace Wizards
                 }
             }
 
-            Bitmap level = new Bitmap("Content/images/world/level.png");
+            //Bitmap level = new Bitmap("Content/images/world/level.png");
 
-            for (int x = 0; x < level.Width; x++)
+            /*for (int x = 0; x < level.Width; x++)
             {
                 for (int y = 0; y < level.Height; y++)
                 {
                     myColor = level.GetPixel(x, y);
                     if (myColor == System.Drawing.Color.FromArgb(255, 0, 0)) ; 
                 }
-            }
+            }*/
 
         }
 

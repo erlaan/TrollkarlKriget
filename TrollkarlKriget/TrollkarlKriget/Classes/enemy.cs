@@ -18,6 +18,5 @@ namespace Wizards
         public enemy(Texture2D texture, Vector2 position)
             : base(texture, position)
         { }
-
     }
 }

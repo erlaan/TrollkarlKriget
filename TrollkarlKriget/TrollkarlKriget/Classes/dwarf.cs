@@ -18,5 +18,6 @@ namespace Wizards
         public dwarf(Texture2D texture, Vector2 position)
             : base(texture, position)
         { }
+
     }
 }

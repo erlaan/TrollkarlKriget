@@ -23,6 +23,7 @@ namespace Wizards
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
         public player p1; // Player 1
+        enemy e1;
         World world; //The map
         Camera cam;
         Cursor cursor;
@@ -55,6 +56,9 @@ namespace Wizards
             new Vector2(0, 0),
             Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
+
+            e1 = new enemy(Content.Load<Texture2D>("images/players/sprite"),
+                new Vector2(0,0));
 
             cam = new Camera();
             cursor = new Cursor(Content.Load<Texture2D>("images/cursor"));

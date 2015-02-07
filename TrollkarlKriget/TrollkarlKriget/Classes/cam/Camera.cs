@@ -15,6 +15,8 @@ namespace Wizards
         public int width;
         public int height;
 
+        public List<Tile> visibleTiles;
+
         public Vector2 position;
 
         public Camera()

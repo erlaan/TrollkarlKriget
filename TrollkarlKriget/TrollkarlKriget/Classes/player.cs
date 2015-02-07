@@ -26,6 +26,8 @@ namespace Wizards
         private int maxSpeed = 15;
         private Vector2 curSpeed = new Vector2(0,0);
         private bool mAction;
+        bool inAir = false;
+        int jumpForce = 0;
 
 
 		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
@@ -41,7 +43,7 @@ namespace Wizards
             this.mAction = false;
 			action = Actions.Still;
 		}
-		public void Update(player otherplayer,  World world, GameTime gameTime)
+		public void Update(player otherplayer,  World world, GameTime gameTime, Camera cam)
 		{
 			KeyboardState keyboardState = Keyboard.GetState();
             MouseState mouseState = Mouse.GetState();
@@ -116,6 +118,11 @@ namespace Wizards
            {
                action = Actions.Still;
            }
+           if (inAir)
+           {
+               position.Y += world.gravity - jumpForce;
+           }
+           this.checkCollision(cam, world); 
 
 
 		}

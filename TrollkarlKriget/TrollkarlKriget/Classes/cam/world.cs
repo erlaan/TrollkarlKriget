@@ -52,11 +52,11 @@ namespace Wizards
                     myColor = level.GetPixel(x, y);
                     if (myColor == System.Drawing.Color.FromArgb(255, 0, 0))
                     {
-                        map[x, y] = new Tile(3, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                        map[x, y] = new Tile(0, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
                     }
                     else if (myColor == System.Drawing.Color.FromArgb(0, 0, 0))
                     {
-                        map[x, y] = new Tile(1, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                        map[x, y] = new Tile(4, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
                     }
                     else
                     {
@@ -76,10 +76,12 @@ namespace Wizards
                 (cam.width + 1) * (texture.Width / numberOfTilesInTexture),
                 (cam.height + 2) * texture.Height);
 
-            //vi loopar igenom ALLA rutor
-            for (int x = 0; x < worldSize; x++)
+            cam.visibleTiles.Clear();
+
+            //vi loopar igenom ALLA rutor  int x = 0; x < worldSize; x++ || int y = 0; y < worldSize; y++
+            for (int x = (int)((cam.position.X / Settings.gridsize)); x <= ((cam.position.X / Settings.gridsize) + cam.width + 1); x++ )
             {
-                for (int y = 0; y < worldSize; y++)
+                for (int y = (int)((cam.position.Y / Settings.gridsize)); y <= ((cam.position.Y / Settings.gridsize) + cam.height +1) ; y++)
                 {
 
                     //För varje ruta så gör vi en rektangel-
@@ -89,9 +91,15 @@ namespace Wizards
                     if (tileRect.Intersects(camRect))
                     {
 
-                        //isåfall så ritar vi ut den. vi skickar med kamerans position för att kunna offsetta det vi ritar ut.  
-                        map[x, y].Draw(spriteBatch, cam.position);
-
+                        //isåfall så ritar vi ut den. vi skickar med kamerans position för att kunna offsetta det vi ritar ut.
+                        try{
+                            cam.visibleTiles.Add(map [x,y]);
+                            map[x, y].Draw(spriteBatch, cam.position);
+                        }
+                        catch
+                        {
+                            continue;
+                        }
                     }
                 }
             }

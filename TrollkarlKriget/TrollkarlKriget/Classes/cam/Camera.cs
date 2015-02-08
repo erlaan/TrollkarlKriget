@@ -25,6 +25,8 @@ namespace Wizards
             width = 20;
             height = 10;
 
+            visibleTiles = new List<Tile>();
+
         }
 
         public void Update(GameTime gameTime, player player)

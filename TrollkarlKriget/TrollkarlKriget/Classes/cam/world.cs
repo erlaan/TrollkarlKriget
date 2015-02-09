@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Diagnostics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -37,11 +38,13 @@ namespace Wizards
 
             Random rnd = new Random();
 
-            numberOfTilesInTexture = 4;
+            numberOfTilesInTexture = texture.Width / Settings.gridsize;
+
 
             Bitmap level = new Bitmap("../../../../TrollkarlKrigetContent/images/world/level.png");
 
             worldSize = level.Width;
+            Debug.WriteLine("HELLO THIS IS WORLD SIZE" + worldSize);
 
             map = new Tile[worldSize, worldSize];
 
@@ -85,7 +88,13 @@ namespace Wizards
                 {
 
                     //För varje ruta så gör vi en rektangel-
-                    Microsoft.Xna.Framework.Rectangle tileRect = new Microsoft.Xna.Framework.Rectangle(x * (texture.Width / numberOfTilesInTexture), y * texture.Height, texture.Width / numberOfTilesInTexture, texture.Height);
+                    Microsoft.Xna.Framework.Rectangle tileRect = new Microsoft.Xna.Framework.Rectangle(
+                        x * (texture.Width / numberOfTilesInTexture), 
+                        y * (texture.Height / numberOfTilesInTexture), 
+                        texture.Width / numberOfTilesInTexture, 
+                        texture.Height / numberOfTilesInTexture
+                        );
+
 
                     //och så kollar vi om rektangeln för rutan är inom rektangeln för kameran.
                     if (tileRect.Intersects(camRect))

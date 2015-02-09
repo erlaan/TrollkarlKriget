@@ -29,11 +29,11 @@ namespace Wizards
 
         }
 
-        public void Update(GameTime gameTime, player player)
+        public void Update(Vector2 playerPos)
         {
-            
-            position.X = player.position.X - ((width * 64) / 2);
-            position.Y = player.position.Y -((height * 64) - 100);
+
+            position.X = playerPos.X - (((float)width * (float)Settings.gridsize) / 2.0f);
+            position.Y = playerPos.Y - ((((float)height * (float)Settings.gridsize) / 2.0f) + 100.0f);
         }
     }
 }

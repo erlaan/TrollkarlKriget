@@ -82,7 +82,10 @@ namespace Wizards
                 {
 
 
-                    if (x>=0&&y>=0&&x<=(worldSize-1)&&y<=(worldSize-1))
+                    if (x >= 0 &&
+                        y >= 0 &&
+                        x<=(worldSize-1) && 
+                        y<=(worldSize-1) )
                     {
 
                         //isåfall så ritar vi ut den. vi skickar med kamerans position för att kunna offsetta det vi ritar ut.
@@ -97,8 +100,6 @@ namespace Wizards
                     }
                 }
             }
-            cam.visibleTiles.Add(map[1, 0]);
-            map[1, 0].Draw(spriteBatch, cam.position);
             foreach (particle part in worldParticles)
             {
                 part.Draw(spriteBatch, cam);

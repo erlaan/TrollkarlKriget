@@ -104,7 +104,7 @@ namespace Wizards
         public void Draw(SpriteBatch spriteBatch, Camera cam)
         {
             spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             spriteBatch.Draw(texture, pos - cam.position, new Rectangle(0, 0,
     (int)texture.Width, (int)texture.Height), this.color, (float)this.roll, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2((float)this.scale,(float)this.scale), SpriteEffects.None, 0f);
             spriteBatch.End();

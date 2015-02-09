@@ -55,7 +55,7 @@ namespace Wizards
 
             foreach (var tile in cam.visibleTiles) {
 
-                /*while(tile.isColliding(myRect))
+                while(tile.isColliding(myRect))
                 {
             
                     checkIfOnGround = true;
@@ -67,7 +67,7 @@ namespace Wizards
                         Convert.ToInt32 (position.Y + (texture.Height/3)-1),
                         texture.Width / 2,
                         1);
-                }*/
+                }
             }
 
             if (checkIfOnGround || action == Actions.Still) {

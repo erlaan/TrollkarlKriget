@@ -75,22 +75,26 @@ namespace Wizards
                 {
                     //TODO Add kasta spells funktion
                     Random rand = new Random();
-                    double num1 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi;
-                    double num2 = Math.Sin(rand.NextDouble() * MathHelper.TwoPi) * MathHelper.Pi * 4;
+                    //double num1 = Math.Sin(mouseState.X);
+                    //double num2 = Math.Sin(mouseState.Y);
                     Vector2 spellDirection = new Vector2(
                         mouseState.X - this.position.X - this.texture.Width/2 + world.cam.position.X,
                         mouseState.Y - this.position.Y - this.texture.Height / this.spriteNum / 2 + world.cam.position.Y);
                     spellDirection.Normalize();
+                    double num1 = Math.Atan2(spellDirection.Y, spellDirection.X);
+                    double num2 = spellDirection.Y;
 
-                    world.worldParticles.Add(new particle(spellDirection*24 + new Vector2(this.position.X + this.texture.Width/2 , this.position.Y + this.texture.Height / this.spriteNum / 2 ), 
-                        spellDirection*24 + this.curSpeed, world.firesprite,
-                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+1400, 
-                        Color.White, Color.Transparent, 
-                        1, 3, //Skala
-                        1, 0.99f, // Luftmotstånd
+                    world.worldParticles.Add(new particle(spellDirection * 4 * this.texture.Width + 
+                        new Vector2(this.position.X + this.texture.Width/2 ,
+                        this.position.Y + this.texture.Height / this.spriteNum / 2 ), 
+                        spellDirection*164, world.firesprite,
+                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+1, 
+                        Color.Cyan, Color.Cyan, 
+                        2, 2, //Skala
+                        1, 1.03f, // Luftmotstånd
                         new Vector2((float)0, (float)0), // Gravitation
                         new Vector2((float)0, (float)0), // Slutgravitation
-                        num1, num2));
+                        num1, num1));
                     action = Actions.Spell;
                 }
 

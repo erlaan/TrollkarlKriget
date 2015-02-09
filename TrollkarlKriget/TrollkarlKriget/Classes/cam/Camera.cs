@@ -22,8 +22,8 @@ namespace Wizards
         public Camera()
         {
             position = new Vector2(0, 0);
-            width = 20;
-            height = 10;
+            width = (int)(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width * 0.8);
+            height = (int)(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height * 0.8);
 
             visibleTiles = new List<Tile>();
 
@@ -32,8 +32,8 @@ namespace Wizards
         public void Update(Vector2 playerPos)
         {
 
-            position.X = playerPos.X - (((float)width * (float)Settings.gridsize) / 2.0f);
-            position.Y = playerPos.Y - ((((float)height * (float)Settings.gridsize) / 2.0f) + 100.0f);
+            position.X = playerPos.X - (width / 2) + 32;
+            position.Y = playerPos.Y - (height / 2) + 32;
         }
     }
 }

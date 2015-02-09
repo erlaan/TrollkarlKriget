@@ -72,32 +72,17 @@ namespace Wizards
 
         public void Draw(SpriteBatch spriteBatch, Camera cam)
         {
-            //Vi gör en rektangel lika stor som kameran. 
-            Microsoft.Xna.Framework.Rectangle camRect = new Microsoft.Xna.Framework.Rectangle(
-                                    Convert.ToInt32(cam.position.X),
-                                    Convert.ToInt32(cam.position.Y),
-                (cam.width + 1) * (texture.Width / numberOfTilesInTexture),
-                (cam.height + 2) * texture.Height);
 
             cam.visibleTiles.Clear();
 
             //vi loopar igenom ALLA rutor  int x = 0; x < worldSize; x++ || int y = 0; y < worldSize; y++
-            for (int x = (int)((cam.position.X / Settings.gridsize)); x <= ((cam.position.X / Settings.gridsize) + cam.width + 1); x++ )
+            for (int x = (int)((cam.position.X / Settings.gridsize)); x <= (int)((cam.position.X + cam.width) / Settings.gridsize); x++)
             {
-                for (int y = (int)((cam.position.Y / Settings.gridsize)); y <= ((cam.position.Y / Settings.gridsize) + cam.height +1) ; y++)
+                for (int y = (int)((cam.position.Y / Settings.gridsize)); y <= (int)((cam.position.Y + cam.height) / Settings.gridsize); y++)
                 {
 
-                    //För varje ruta så gör vi en rektangel-
-                    Microsoft.Xna.Framework.Rectangle tileRect = new Microsoft.Xna.Framework.Rectangle(
-                        x * (texture.Width / numberOfTilesInTexture), 
-                        y * (texture.Height / numberOfTilesInTexture), 
-                        texture.Width / numberOfTilesInTexture, 
-                        texture.Height / numberOfTilesInTexture
-                        );
 
-
-                    //och så kollar vi om rektangeln för rutan är inom rektangeln för kameran.
-                    if (tileRect.Intersects(camRect))
+                    if (x>=0&&y>=0&&x<=(worldSize-1)&&y<=(worldSize-1))
                     {
 
                         //isåfall så ritar vi ut den. vi skickar med kamerans position för att kunna offsetta det vi ritar ut.
@@ -112,6 +97,8 @@ namespace Wizards
                     }
                 }
             }
+            cam.visibleTiles.Add(map[1, 0]);
+            map[1, 0].Draw(spriteBatch, cam.position);
             foreach (particle part in worldParticles)
             {
                 part.Draw(spriteBatch, cam);

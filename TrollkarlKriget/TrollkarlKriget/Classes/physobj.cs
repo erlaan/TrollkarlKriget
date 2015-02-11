@@ -41,10 +41,10 @@ namespace Wizards
         public void checkCollision(Camera cam, World world)
         {
             Rectangle myRect = new Rectangle(
-                Convert.ToInt32(position.X + (texture.Width / 3)),
-                Convert.ToInt32(position.Y + (texture.Height / 3) - 1),
+                Convert.ToInt32(position.X),
+                Convert.ToInt32(position.Y),
                 texture.Width / 2,
-                1);
+                texture.Height / 3);
 
             bool checkIfOnGround = false;
             if (inAir && action == Actions.Still)
@@ -53,20 +53,25 @@ namespace Wizards
             }
             inAir = true;
 
-            foreach (var tile in cam.visibleTiles) {
-
-                while(tile.isColliding(myRect))
+            for (int x = (int)position.X / Settings.gridsize; x < (int)Math.Ceiling((position.X + texture.Width) / Settings.gridsize); x++)
+            {
+                for (int y = (int)position.Y / Settings.gridsize; y < (int)Math.Ceiling((position.Y + texture.Height / 3) / Settings.gridsize); y++)
                 {
-            
-                    checkIfOnGround = true;
 
-                    position.Y--;
 
-                    myRect = new Rectangle (
-                        Convert.ToInt32 (position.X + (texture.Width/3)),
-                        Convert.ToInt32 (position.Y + (texture.Height/3)-1),
-                        texture.Width / 2,
-                        1);
+                    /*while (tile.isColliding(myRect))
+                    {
+
+                        checkIfOnGround = true;
+
+                        position.Y--;
+
+                        myRect = new Rectangle(
+                            Convert.ToInt32(position.X + (texture.Width / 3)),
+                            Convert.ToInt32(position.Y + (texture.Height / 3) - 1),
+                            texture.Width / 2,
+                            1);
+                    }*/
                 }
             }
 

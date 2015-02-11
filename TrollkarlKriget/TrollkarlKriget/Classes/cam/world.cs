@@ -18,7 +18,7 @@ namespace Wizards
 {
     public class World
     {
-        int worldSize;
+        public int worldSize;
         Texture2D texture;
         public Tile[,] map;
         public List<particle> worldParticles = new List<particle>();

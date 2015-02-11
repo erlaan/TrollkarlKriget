@@ -25,15 +25,20 @@ namespace Wizards
         {
 
         }
-        public bool isColliding(Rectangle otherRect)
+        /*public bool isColliding(physobj other)
         {
             Rectangle myRect = new Rectangle(
                 Convert.ToInt32(position.X),
                 Convert.ToInt32(position.Y),
                 Convert.ToInt32(Width),
-                Convert.ToInt32(Height) );
+                Convert.ToInt32(Height));
+            Rectangle otherRect = new Rectangle(
+                Convert.ToInt32(other.position.X),
+                Convert.ToInt32(other.position.Y),
+                Convert.ToInt32(other.Width),
+                Convert.ToInt32(other.Height));
             return myRect.Intersects(otherRect);
-        }
+        }*/
 
 
         public bool Alive { get { return isAlive; } set { isAlive = value; } }
@@ -43,8 +48,8 @@ namespace Wizards
             Rectangle myRect = new Rectangle(
                 Convert.ToInt32(position.X),
                 Convert.ToInt32(position.Y),
-                texture.Width / 2,
-                texture.Height / 3);
+                texture.Width,
+                texture.Height/3);
 
             bool checkIfOnGround = false;
             if (inAir && action == Actions.Still)
@@ -57,21 +62,28 @@ namespace Wizards
             {
                 for (int y = (int)position.Y / Settings.gridsize; y < (int)Math.Ceiling((position.Y + texture.Height / 3) / Settings.gridsize); y++)
                 {
-
-
-                    /*while (tile.isColliding(myRect))
+                    if (x >= 0 &&
+                        y >= 0 &&
+                        x <= (world.worldSize - 1) &&
+                        y <= (world.worldSize - 1))
                     {
+                        Tile tile = world.map[x, y];
+                        while (tile.isColliding(myRect))
+                        {
 
-                        checkIfOnGround = true;
+                            checkIfOnGround = true;
 
-                        position.Y--;
+                            position.Y--;
+                            
+                            myRect = new Rectangle(
+                                Convert.ToInt32(position.X + (texture.Width / 3)),
+                                Convert.ToInt32(position.Y + (texture.Height / 3) - 1),
+                                texture.Width / 2,
+                                1);
+                        }
 
-                        myRect = new Rectangle(
-                            Convert.ToInt32(position.X + (texture.Width / 3)),
-                            Convert.ToInt32(position.Y + (texture.Height / 3) - 1),
-                            texture.Width / 2,
-                            1);
-                    }*/
+
+                    }
                 }
             }
 
@@ -83,11 +95,6 @@ namespace Wizards
             }else {
                 inAir = true;
             }
-
-
-
-
-
         }
         
     }

@@ -52,7 +52,7 @@ namespace Wizards
 				action = Actions.Jump;
 				}
             position.X += curSpeed.X;
-
+            position.Y += world.gravity;
             if (Math.Abs(curSpeed.X) != maxSpeed)
             {
                 if (keyboardState.IsKeyDown(Right))

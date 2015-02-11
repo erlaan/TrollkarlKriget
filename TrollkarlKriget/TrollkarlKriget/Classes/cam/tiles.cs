@@ -27,14 +27,13 @@ namespace Wizards
             numberOfTilesInTexture = 4;
             this.type = tileType;
             this.position = position;
-
             if (type > 0)
                 isPassable = false;
             else
                 isPassable = true;
 
         }
-
+        
         public bool isColliding(Rectangle otherRect)
         {
             if (!isPassable)
@@ -48,7 +47,7 @@ namespace Wizards
             }
             return false;
         }
-
+        
         public void Draw(SpriteBatch spriteBatch, Vector2 camOffset)
         {
 

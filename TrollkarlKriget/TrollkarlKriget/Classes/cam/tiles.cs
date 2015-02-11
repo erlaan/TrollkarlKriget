@@ -59,10 +59,12 @@ namespace Wizards
             Vector2 drawPos = position - camOffset;
 
             //Rita ut rutan
-            spriteBatch.Draw(texture, drawPos,
-                new Rectangle(type * tileWidth, 0, texture.Width / numberOfTilesInTexture, texture.Height),
-                Color.White);
-
+            if (type != 0)
+            {
+                spriteBatch.Draw(texture, drawPos,
+                    new Rectangle(type * tileWidth, 0, texture.Width / numberOfTilesInTexture, texture.Height),
+                    Color.White);
+            }
         }
 
         public void Clicked()

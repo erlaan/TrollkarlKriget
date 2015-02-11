@@ -105,7 +105,10 @@ namespace Wizards
         {
             spriteBatch.End();
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            spriteBatch.Draw(texture, pos - cam.position, new Rectangle(0, 0,
+            Vector2 drawpos = pos - cam.position;
+            drawpos.X = (float)Math.Round(drawpos.X);
+            drawpos.Y = (float)Math.Round(drawpos.Y);
+            spriteBatch.Draw(texture, drawpos, new Rectangle(0, 0,
     (int)texture.Width, (int)texture.Height), this.color, (float)this.roll, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2((float)this.scale,(float)this.scale), SpriteEffects.None, 0f);
             spriteBatch.End();
             spriteBatch.Begin();

@@ -87,9 +87,9 @@ namespace Wizards
                     world.worldParticles.Add(new particle(spellDirection * 4 * this.texture.Width + 
                         new Vector2(this.position.X + this.texture.Width/2 ,
                         this.position.Y + this.texture.Height / this.spriteNum / 2 ), 
-                        spellDirection*164, world.firesprite,
-                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+1, 
-                        Color.Cyan, Color.Cyan, 
+                        spellDirection*0, world.firesprite,
+                        gameTime.TotalGameTime.TotalMilliseconds, gameTime.TotalGameTime.TotalMilliseconds+100, 
+                        Color.Cyan, Color.Transparent, 
                         2, 2, //Skala
                         1, 1.03f, // Luftmotstånd
                         new Vector2((float)0, (float)0), // Gravitation

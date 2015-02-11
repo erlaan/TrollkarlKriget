@@ -68,18 +68,21 @@ namespace Wizards
                         y <= (world.worldSize - 1))
                     {
                         Tile tile = world.map[x, y];
-                        while (tile.isColliding(myRect))
+                        if (tile.type != 0)
                         {
+                            while (tile.isColliding(myRect))
+                            {
 
-                            checkIfOnGround = true;
+                                checkIfOnGround = true;
 
-                            position.Y--;
-                            
-                            myRect = new Rectangle(
-                                Convert.ToInt32(position.X + (texture.Width / 3)),
-                                Convert.ToInt32(position.Y + (texture.Height / 3) - 1),
-                                texture.Width / 2,
-                                1);
+                                position.Y--;
+
+                                myRect = new Rectangle(
+                                    Convert.ToInt32(position.X + (texture.Width / 3)),
+                                    Convert.ToInt32(position.Y + (texture.Height / 3) - 1),
+                                    texture.Width / 2,
+                                    1);
+                            }
                         }
 
 

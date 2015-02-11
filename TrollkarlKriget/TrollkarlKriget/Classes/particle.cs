@@ -28,6 +28,8 @@ namespace Wizards
         private double roll;
         private double timeLength;
 
+        private bool Destroy;
+
         private float initResistance;
         private float endResistance;
 
@@ -99,12 +101,22 @@ namespace Wizards
 
             this.scale = initScale * tempTime + endScale * (1 - tempTime);
             // Räkna ut tidens påverkan på storleken
+            int xpos = (int)(this.pos.X + ((this.texture.Width / 2) * this.scale))/Settings.gridsize;
+            int ypos = (int)(this.pos.Y + ((this.texture.Height / 2) * this.scale))/Settings.gridsize;
+
+            if (xpos >= 0 &&
+                ypos >= 0 &&
+                xpos <= (world.worldSize - 1) &&
+                ypos <= (world.worldSize - 1))
+            {
+                world.map[xpos, ypos].type = 0;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Camera cam)
         {
             spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
             Vector2 drawpos = pos - cam.position;
             drawpos.X = (float)Math.Round(drawpos.X);
             drawpos.Y = (float)Math.Round(drawpos.Y);

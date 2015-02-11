@@ -16,7 +16,7 @@ namespace Wizards
     public class Tile : baseobj
     {
         bool isPassable;
-        int type;
+        public int type;
         const int tileWidth = 64;
         int numberOfTilesInTexture;
 

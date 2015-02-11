@@ -32,8 +32,8 @@ namespace Wizards
         public void Update(Vector2 playerPos)
         {
 
-            position.X = playerPos.X - (width / 2) + 32;
-            position.Y = playerPos.Y - (height / 2) + 32;
+            position.X = (float)Math.Round(playerPos.X - (width / 2) + 32);
+            position.Y = (float)Math.Round(playerPos.Y - (height / 2) + 32);
         }
     }
 }

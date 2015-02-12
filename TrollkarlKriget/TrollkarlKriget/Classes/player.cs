@@ -28,6 +28,8 @@ namespace Wizards
         private bool mAction;
         bool inAir = false;
         int jumpForce = 0;
+        public enum Directions {Left, Right, None};
+        Directions direction;
 
 
 		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
@@ -47,12 +49,24 @@ namespace Wizards
 		{
 			KeyboardState keyboardState = Keyboard.GetState();
             MouseState mouseState = Mouse.GetState();
-			if (keyboardState.IsKeyDown(Jump)){
-					//TODO Add Jump funktion
-				action = Actions.Jump;
-				}
+            if (keyboardState.IsKeyDown(Jump) && jumpForce == 0 && action != Actions.Jump)
+            {
+                //TODO Add Jump funktion
+
+                action = Actions.Jump;
+                jumpForce = 30;
+            }
+            else if (jumpForce > 0)
+            {
+                action = Actions.Jump;
+                jumpForce--;
+
+            }
+            else
+                position.Y += world.gravity;
             position.X += curSpeed.X;
-            position.Y += world.gravity;
+            //position.Y += world.gravity;
+          
             if (Math.Abs(curSpeed.X) != maxSpeed)
             {
                 if (keyboardState.IsKeyDown(Right))
@@ -61,6 +75,7 @@ namespace Wizards
                     curSpeed.X = Math.Min(curSpeed.X + acceleration, maxSpeed);
                     action = Actions.Right;
                     mAction = true;
+                    direction = Directions.Right;
                 }
 
                 else if (keyboardState.IsKeyDown(Left))
@@ -68,6 +83,7 @@ namespace Wizards
                     curSpeed.X = Math.Max(curSpeed.X - acceleration, -maxSpeed);
                     action = Actions.Left;
                     mAction = true;
+                    direction = Directions.Left;
                 }
 
 
@@ -137,7 +153,7 @@ namespace Wizards
            {
                action = Actions.Still;
            }
-           if (inAir)
+           if (inAir || action == Actions.Jump)
            {
                position.Y += world.gravity - jumpForce;
            }

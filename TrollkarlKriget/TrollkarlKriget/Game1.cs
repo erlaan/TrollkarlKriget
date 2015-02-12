@@ -46,14 +46,14 @@ namespace Wizards
 				
 		}
 
-
+        
 		protected override void LoadContent ()
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch (GraphicsDevice);
 
             p1 = new player(Content.Load<Texture2D>("images/players/sprite"),
-            new Vector2(0, 0),
+            new Vector2(1450, 3900),
             Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 

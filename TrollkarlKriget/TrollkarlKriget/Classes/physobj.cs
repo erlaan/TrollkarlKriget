@@ -100,7 +100,7 @@ namespace Wizards
                 inAir = true;
             }
 
-   /*         if (direction == player.Directions.Left)
+   /*        if (direction == player.Directions.Left)
             {
                 myRect = new Rectangle(
                 Convert.ToInt32(position.X),

@@ -65,7 +65,7 @@ namespace Wizards
             else
                 position.Y += world.gravity;
             position.X += curSpeed.X;
-            //position.Y += world.gravity;
+            
           
             if (Math.Abs(curSpeed.X) != maxSpeed)
             {

@@ -51,7 +51,7 @@ namespace Wizards
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch (GraphicsDevice);
-
+            Texture2D enemytexture = Content.Load<Texture2D> ("images/players/sprite");  
             p1 = new player(Content.Load<Texture2D>("images/players/sprite"),
             new Vector2(1450, 3900),
             Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
@@ -62,7 +62,7 @@ namespace Wizards
 
             cam = new Camera();
             cursor = new Cursor(Content.Load<Texture2D>("images/cursor"));
-            world = new World(tile_texture);
+            world = new World(tile_texture, enemytexture );
             world.firesprite = Content.Load<Texture2D>("images/flamesprite");
             world.cam = cam;
 		}

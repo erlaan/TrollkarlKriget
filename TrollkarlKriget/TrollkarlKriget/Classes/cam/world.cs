@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using System.Diagnostics;
+
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -27,14 +27,16 @@ namespace Wizards
         int numberOfTilesInTexture;
         private System.Drawing.Color myColor;
         public int gravity;
+        List<enemy> enemies;
 
-        public World(Texture2D texture)
+        public World(Texture2D texture, Texture2D enemyTexture)
         {
             gravity = 9; 
             
             this.texture = texture;
 
-            
+            enemies = new List<enemy> ();
+
 
             Random rnd = new Random();
 
@@ -44,7 +46,6 @@ namespace Wizards
             Bitmap level = new Bitmap("../../../../TrollkarlKrigetContent/images/world/level.png");
 
             worldSize = level.Width;
-            Debug.WriteLine("HELLO THIS IS WORLD SIZE" + worldSize);
 
             map = new Tile[worldSize, worldSize];
 
@@ -79,8 +80,9 @@ namespace Wizards
                     }
                     else if (myColor == System.Drawing.Color.FromArgb(255, 25, 255))
                     {
-                        // Alla enemies spawnar med den här collor checken
+                        // Alla enemies spawnar med den här Färg checken
                         map[x, y] = new Tile(1, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                        enemies.Add(new enemy (enemyTexture, new Vector2 (x * Settings.gridsize, y * Settings.gridsize)));
                     }
                     else
                     {
@@ -111,7 +113,7 @@ namespace Wizards
 
                         //isåfall så ritar vi ut den. vi skickar med kamerans position för att kunna offsetta det vi ritar ut.
                         try{
-                            cam.visibleTiles.Add(map [x,y]);
+                            cam.visibleTiles.Add(map[x, y]);
                             map[x, y].Draw(spriteBatch, cam.position);
                             
                         }
@@ -125,6 +127,10 @@ namespace Wizards
             foreach (particle part in worldParticles)
             {
                 part.Draw(spriteBatch, cam);
+            }
+            foreach (var enemy in enemies)
+            {
+                enemy.Draw(spriteBatch, cam);
             }
 
         }

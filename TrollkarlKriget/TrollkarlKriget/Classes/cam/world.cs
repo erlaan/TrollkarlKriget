@@ -63,7 +63,7 @@ namespace Wizards
                     }
                     else if (myColor == System.Drawing.Color.FromArgb(0, 0, 255))
                     {
-                        map[x, y] = new Tile(3, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                        map[x, y] = new Tile(1, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
                         
                     }
                     else

@@ -24,7 +24,7 @@ namespace Wizards
 		private int spriteNum = 3;
         private int acceleration = 1;
         private int maxSpeed = 40;
-        private Vector2 curSpeed = new Vector2(0,0);
+        public Vector2 curSpeed = new Vector2(0,0);
         private bool mAction;
         bool inAir = false;
         int jumpForce = 0;

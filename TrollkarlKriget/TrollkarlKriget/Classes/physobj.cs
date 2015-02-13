@@ -19,27 +19,27 @@ namespace Wizards
 
         bool inAir;
         int jumpForce = 0;
-        protected bool isAlive = true;
+        public bool isAlive = true;
         player.Directions direction;
 
         public physobj(Texture2D texture, Vector2 position) : base (texture, position)
         {
 
         }
-        /*public bool isColliding(physobj other)
+        public bool isCharactersColliding(physobj other)
         {
             Rectangle myRect = new Rectangle(
                 Convert.ToInt32(position.X),
                 Convert.ToInt32(position.Y),
                 Convert.ToInt32(Width),
-                Convert.ToInt32(Height));
+                Convert.ToInt32(Height/3));
             Rectangle otherRect = new Rectangle(
                 Convert.ToInt32(other.position.X),
                 Convert.ToInt32(other.position.Y),
                 Convert.ToInt32(other.Width),
-                Convert.ToInt32(other.Height));
+                Convert.ToInt32(other.Height/3));
             return myRect.Intersects(otherRect);
-        }*/
+        }
 
 
         public bool Alive { get { return isAlive; } set { isAlive = value; } }
@@ -62,7 +62,7 @@ namespace Wizards
             for (int x = (int)position.X / Settings.gridsize; x < (int)Math.Ceiling((position.X + texture.Width) / Settings.gridsize); x++)
             {
                 for (int y = (int)position.Y / Settings.gridsize; y < (int)Math.Ceiling((position.Y + texture.Height / 3) / Settings.gridsize); y++)
-                {
+                {   
                     if (x >= 0 &&
                         y >= 0 &&
                         x <= (world.worldSize - 1) &&

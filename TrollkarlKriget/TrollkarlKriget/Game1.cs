@@ -58,7 +58,7 @@ namespace Wizards
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 
             e1 = new enemy(Content.Load<Texture2D>("images/players/sprite"),
-                new Vector2(0,0));
+                new Vector2(1600, 4000));
 
             cam = new Camera();
             cursor = new Cursor(Content.Load<Texture2D>("images/cursor"));
@@ -75,6 +75,7 @@ namespace Wizards
 			}
             p1.Update(null, world, gameTime, cam);
             p1.checkCollision(cam, world);
+            e1.checkCollision(cam, world);
             List<particle> newlist = new List<particle>();
             foreach (particle part in world.worldParticles)
             {
@@ -97,6 +98,7 @@ namespace Wizards
             spriteBatch.Begin();
             world.Draw(spriteBatch, cam);
             p1.Draw(spriteBatch, cam);
+            e1.Draw(spriteBatch, cam);
             cursor.Draw(spriteBatch);
             spriteBatch.End();
             

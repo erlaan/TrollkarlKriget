@@ -21,6 +21,10 @@ namespace Wizards
         public enemy(Texture2D texture, Vector2 position)
             : base(texture, position)
         { }
+        public void Update(World world)
+        {
+            position.Y += world.gravity;
+        }
         public void Draw(SpriteBatch spriteBatch, Camera cam)
         {
             Vector2 drawPos = position - cam.position;

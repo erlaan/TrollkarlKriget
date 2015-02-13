@@ -74,6 +74,7 @@ namespace Wizards
 				Exit ();
 			}
             p1.Update(null, world, gameTime, cam);
+            e1.Update(world);
             p1.checkCollision(cam, world);
             e1.checkCollision(cam, world);
             List<particle> newlist = new List<particle>();

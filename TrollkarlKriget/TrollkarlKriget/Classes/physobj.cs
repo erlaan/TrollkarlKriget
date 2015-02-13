@@ -80,9 +80,9 @@ namespace Wizards
 
                                 myRect = new Rectangle(
                                     Convert.ToInt32(position.X + (texture.Width / 3)),
-                                    Convert.ToInt32(position.Y + (texture.Height / 3) - 1),
+                                    Convert.ToInt32(position.Y),
                                     texture.Width / 2,
-                                    1);
+                                    texture.Height / 3);
                             }
                         }
 

@@ -77,6 +77,7 @@ namespace Wizards
             e1.Update(world);
             p1.checkCollision(cam, world);
             e1.checkCollision(cam, world);
+
             List<particle> newlist = new List<particle>();
             foreach (particle part in world.worldParticles)
             {
@@ -86,6 +87,7 @@ namespace Wizards
             }
            
             world.worldParticles = newlist;
+            world.Update(gameTime);
             cam.Update (p1.position);
             cursor.Update(cam, world);
 			base.Update (gameTime);

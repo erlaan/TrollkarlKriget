@@ -89,6 +89,7 @@ namespace Wizards
 
                     }
                 }
+           
             }
 
             if (checkIfOnGround || action == Actions.Still) {

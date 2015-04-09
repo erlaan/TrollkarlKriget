@@ -81,7 +81,7 @@ namespace Wizards
                     else if (myColor == System.Drawing.Color.FromArgb(255, 25, 255))
                     {
                         // Alla enemies spawnar med den här Färg checken
-                        map[x, y] = new Tile(1, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
+                        map[x, y] = new Tile(0, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
                         enemies.Add(new enemy (enemyTexture, new Vector2 (x * Settings.gridsize, y * Settings.gridsize)));
                     }
                     else
@@ -91,6 +91,16 @@ namespace Wizards
                 }
             }
 
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            foreach (var e1 in enemies)
+            {
+                e1.Update(this);
+                e1.checkCollision(cam, this);
+
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Camera cam)
@@ -128,9 +138,9 @@ namespace Wizards
             {
                 part.Draw(spriteBatch, cam);
             }
-            foreach (var enemy in enemies)
+            foreach (var e1 in enemies)
             {
-                enemy.Draw(spriteBatch, cam);
+                e1.Draw(spriteBatch, cam);
             }
 
         }

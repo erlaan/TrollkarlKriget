@@ -101,8 +101,8 @@ namespace Wizards
 
             this.scale = initScale * tempTime + endScale * (1 - tempTime);
             // Räkna ut tidens påverkan på storleken
-            int xpos = (int)(this.pos.X + ((this.texture.Width / 2) * this.scale))/Settings.gridsize;
-            int ypos = (int)(this.pos.Y + ((this.texture.Height / 2) * this.scale))/Settings.gridsize;
+            int xpos = (int)(this.pos.X + ((this.texture.Width / 2) * this.scale * Math.Cos(this.roll)))/Settings.gridsize;
+            int ypos = (int)(this.pos.Y + ((this.texture.Height / 2) * this.scale * Math.Sin(this.roll)))/Settings.gridsize;
 
             if (xpos >= 0 &&
                 ypos >= 0 &&

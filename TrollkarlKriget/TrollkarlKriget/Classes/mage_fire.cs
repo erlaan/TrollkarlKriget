@@ -16,8 +16,8 @@ namespace Wizards
 {
     public class Pyromancer : player
 	{
-		public Pyromancer (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
-			:base(texture, position,jump,right,left,melee,spell)
+		public Pyromancer (Texture2D texture, Vector2 position, Vector2 speed, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
+			:base(texture, position, speed, jump,right,left,melee,spell)
 		{
 		}
 	}

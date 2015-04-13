@@ -24,7 +24,6 @@ namespace Wizards
 		private int spriteNum = 3;
         private int acceleration = 1;
         private int maxSpeed = 40;
-        public Vector2 curSpeed = new Vector2(0,0);
         private bool mAction;
         bool inAir = false;
         int jumpForce = 0;
@@ -32,8 +31,8 @@ namespace Wizards
         Directions direction;
 
 
-		public player (Texture2D texture, Vector2 position, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
-            :  base (texture, position)
+		public player (Texture2D texture, Vector2 position, Vector2 speed, Keys jump, Keys right, Keys left, Keys melee, Keys spell)
+            :  base (texture, position, speed)
 		{
 			this.position = position;
 			this.texture = texture;
@@ -42,6 +41,7 @@ namespace Wizards
 			this.Left = left;
 			this.Spell = spell;
 			this.Melee = melee;
+            this.curSpeed = speed;
             this.mAction = false;
 			action = Actions.Still;
 		}
@@ -52,7 +52,7 @@ namespace Wizards
             if (keyboardState.IsKeyDown(Jump) && jumpForce == 0 && action != Actions.Jump)
             {
                 //TODO Add Jump funktion
-
+                
                 action = Actions.Jump;
                 jumpForce = 30;
             }

@@ -15,8 +15,8 @@ namespace Wizards
 {
     class ogre : enemy
     {
-        public ogre(Texture2D texture, Vector2 position)
-            : base(texture, position)
+        public ogre(Texture2D texture, Vector2 position, Vector2 speed)
+            : base(texture, position, speed)
         { }
     }
 }

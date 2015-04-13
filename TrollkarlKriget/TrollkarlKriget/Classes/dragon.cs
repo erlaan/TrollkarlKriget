@@ -15,8 +15,8 @@ namespace Wizards
 {
     class dragon : enemy
     {
-        public dragon(Texture2D texture, Vector2 position)
-            : base(texture, position)
+        public dragon(Texture2D texture, Vector2 position, Vector2 speed)
+            : base(texture, position, speed)
         { }
 
     }

@@ -21,9 +21,14 @@ namespace Wizards
         int jumpForce = 0;
         public bool isAlive = true;
         player.Directions direction;
+        public Vector2 curSpeed = new Vector2(0, 0);
+        float speed;
 
-        public physobj(Texture2D texture, Vector2 position) : base (texture, position)
+        public physobj(Texture2D texture, Vector2 position, Vector2 speed) : base (texture, position)
         {
+            this.curSpeed = speed;
+            this.position = position;
+            this.speed = 1;
 
         }
         public bool isCharactersColliding(physobj other)
@@ -46,6 +51,8 @@ namespace Wizards
 
         public void checkCollision(Camera cam, World world)
         {
+            
+
             Rectangle myRect = new Rectangle(
                 Convert.ToInt32(position.X),
                 Convert.ToInt32(position.Y),
@@ -69,6 +76,7 @@ namespace Wizards
                         y <= (world.worldSize - 1))
                     {
                         Tile tile = world.map[x, y];
+
                         if (tile.type != 0)
                         {
                             while (tile.isColliding(myRect))
@@ -76,7 +84,12 @@ namespace Wizards
 
                                 checkIfOnGround = true;
 
+
                                 position.Y--;
+                               /* if (tile.type != 0)
+                                {
+                                    position.X -= curSpeed.X / Math.Abs(curSpeed.X);
+                                }*/
 
                                 myRect = new Rectangle(
                                     Convert.ToInt32(position.X + (texture.Width / 3)),
@@ -85,8 +98,6 @@ namespace Wizards
                                     texture.Height / 3);
                             }
                         }
-
-
                     }
                 }
            
@@ -100,47 +111,6 @@ namespace Wizards
             }else {
                 inAir = true;
             }
-
-   /*        if (direction == player.Directions.Left)
-            {
-                myRect = new Rectangle(
-                Convert.ToInt32(position.X),
-                Convert.ToInt32(position.Y + ((texture.Height / 3) / 3)),
-                1,
-                (texture.Height / 3) / 3);
-            }
-            else if (direction == player.Directions.Right)
-            {
-                myRect = new Rectangle(
-                Convert.ToInt32(position.X + texture.Width),
-                Convert.ToInt32(position.Y + ((texture.Height / 3) / 3)),
-                1,
-                (texture.Height / 3) / 3);
-            }
-            foreach (var tile in cam.visibleTiles)
-            {
-                while (tile.isColliding(myRect))
-                {
-                    if (direction == player.Directions.Left)
-                    {
-                        position.X++;
-                        myRect = new Rectangle (
-                            Convert.ToInt32 (position.X),
-                            Convert.ToInt32 (position.Y + ((texture.Height/ 3) /3 )),
-                            1,
-                        (texture.Height /3) /3);
-                    }
-                    if (direction == player.Directions.Right)
-                    {
-                        position.X--;
-                        myRect = new Rectangle(
-                            Convert.ToInt32(position.X + texture.Width),
-                            Convert.ToInt32(position.Y + ((texture.Height / 3) / 3)),
-                            1,
-                            (texture.Height / 3) / 3);
-                    }
-                }
-            }*/
 
         }
         

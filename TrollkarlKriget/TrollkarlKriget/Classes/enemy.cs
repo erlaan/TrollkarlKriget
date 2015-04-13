@@ -18,8 +18,8 @@ namespace Wizards
         private int spriteNum = 3;
         private int spriteHeight;
         int health;
-        public enemy(Texture2D texture, Vector2 position)
-            : base(texture, position)
+        public enemy(Texture2D texture, Vector2 position, Vector2 speed)
+            : base(texture, position, speed)
         { }
         public void Update(World world)
         {

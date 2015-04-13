@@ -53,12 +53,12 @@ namespace Wizards
 			spriteBatch = new SpriteBatch (GraphicsDevice);
             Texture2D enemytexture = Content.Load<Texture2D> ("images/players/sprite");  
             p1 = new player(Content.Load<Texture2D>("images/players/sprite"),
-            new Vector2(1450, 3900),
+            new Vector2(1450, 3900), new Vector2(1,0),
             Keys.W, Keys.D, Keys.A, Keys.R, Keys.Space);
             Texture2D tile_texture = Content.Load<Texture2D>("images/world/square");
 
             e1 = new enemy(Content.Load<Texture2D>("images/players/sprite"),
-                new Vector2(1600, 4000));
+                new Vector2(1600, 4000), new Vector2(1,0));
 
             cam = new Camera();
             cursor = new Cursor(Content.Load<Texture2D>("images/cursor"));

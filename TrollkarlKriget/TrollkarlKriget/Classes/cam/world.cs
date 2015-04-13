@@ -78,12 +78,12 @@ namespace Wizards
                         //Boss på första leveln
                         map[x, y] = new Tile(1, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
                     }
-                    else if (myColor == System.Drawing.Color.FromArgb(255, 25, 255))
+                    /*else if (myColor == System.Drawing.Color.FromArgb(255, 25, 255))
                     {
                         // Alla enemies spawnar med den här Färg checken
                         map[x, y] = new Tile(0, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);
-                        enemies.Add(new enemy (enemyTexture, new Vector2 (x * Settings.gridsize, y * Settings.gridsize)));
-                    }
+                        enemies.Add(new enemy (enemyTexture, new Vector2 (x * Settings.gridsize, y * Settings.gridsize), new Vector2(1,0)));
+                    }*/
                     else
                     {
                         map[x, y] = new Tile(0, new Vector2(x * (texture.Width / numberOfTilesInTexture), y * (texture.Height)), texture);

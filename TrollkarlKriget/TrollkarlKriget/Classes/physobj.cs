@@ -52,67 +52,54 @@ namespace Wizards
         public void checkCollision(Camera cam, World world)
         {
             
-
-            Rectangle myRect = new Rectangle(
-                Convert.ToInt32(position.X),
-                Convert.ToInt32(position.Y),
-                texture.Width,
-                texture.Height/3);
-
-            bool checkIfOnGround = false;
             if (inAir && action == Actions.Still)
             {
                 action = Actions.Jump;
             }
             inAir = true;
 
-            for (int x = (int)position.X / Settings.gridsize; x < (int)Math.Ceiling((position.X + texture.Width) / Settings.gridsize); x++)
+            //Check collision
+            int posX = (int)position.X/Settings.gridsize;
+            int posY = (int)position.Y/Settings.gridsize;
+            for (int x = Math.Max(0, posX-1); x < Math.Max(0, (int)Math.Ceiling((double)(posX + 2))); x++)
             {
-                for (int y = (int)position.Y / Settings.gridsize; y < (int)Math.Ceiling((position.Y + texture.Height / 3) / Settings.gridsize); y++)
-                {   
-                    if (x >= 0 &&
-                        y >= 0 &&
-                        x <= (world.worldSize - 1) &&
-                        y <= (world.worldSize - 1))
-                    {
-                        Tile tile = world.map[x, y];
+                for (int y = Math.Max(0, posY); y < Math.Max(0, posY+3); y++)
+                {
+                    Tile tile = world.map[x, y];
 
-                        if (tile.type != 0)
+                    if (tile.type != 0)
+                    {
+                        if (y == posY+3)
                         {
-                            while (tile.isColliding(myRect))
+                            inAir = false;
+                        }
+                        else{
+                            if (curSpeed.X > 0)
+                            {
+                                if (position.X + Settings.gridsize > x * Settings.gridsize)
+                                {
+                                    position.X--;
+                                }
+                            }
+                            else if (curSpeed.X < 0)
                             {
 
-                                checkIfOnGround = true;
-
-
-                                position.Y--;
-                               /* if (tile.type != 0)
-                                {
-                                    position.X -= curSpeed.X / Math.Abs(curSpeed.X);
-                                }*/
-
-                                myRect = new Rectangle(
-                                    Convert.ToInt32(position.X + (texture.Width / 3)),
-                                    Convert.ToInt32(position.Y),
-                                    texture.Width / 2,
-                                    texture.Height / 3);
                             }
                         }
                     }
                 }
-           
             }
 
-            if (checkIfOnGround || action == Actions.Still) {
-                jumpForce = 0;
+            if (!inAir)
+            {
+                position.Y--;
+                /*jumpForce = 0;
 
-                action = Actions.Still;
-
-            }else {
-                inAir = true;
+                action = Actions.Still;*/
             }
 
         }
-        
+
     }
+        
 }

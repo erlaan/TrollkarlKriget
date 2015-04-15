@@ -63,7 +63,7 @@ namespace Wizards
 
             }
             else
-                position.Y += world.gravity;
+            position.Y += world.gravity;
             position.X += curSpeed.X;
             
           

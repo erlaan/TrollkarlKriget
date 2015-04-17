@@ -52,36 +52,39 @@ namespace Wizards
 
         public void checkCollision(Camera cam, World world)
         {
-            Rectangle playerRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height/3);
-            foreach (Tile tile in cam.visibleTiles) 
+            Rectangle playerRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height / 3);
+            foreach (Tile tile in cam.visibleTiles)
             {
                 Rectangle tileRect = new Rectangle((int)tile.position.X, (int)tile.position.Y, Settings.gridsize, Settings.gridsize);
-                if (tile.type!=0 && playerRect.Intersects(tileRect)){
-                    switch(Math.Abs(position.X-tile.position.X)>Math.Abs(position.Y-tile.position.Y)){
-                        case (true):
-                            if (curSpeed.Y > 0)
-                            {
-                                position.Y -= position.Y - tile.position.Y;
-                            }
-                            else
-                            {
-                                position.Y += position.Y - tile.position.Y;
-                            }
-                            break;
-                        case (false):
-                            if (curSpeed.X < 0)
-                            {
-                                position.X += position.X - tile.position.X;
-                            }
-                            else
-                            {
-                                position.X -= position.X - tile.position.X;
-                            }
-                            break;
+                if (tile.type != 0 && playerRect.Intersects(tileRect))
+                {
+                    if (curSpeed.Y > 0)
+                    {
+                        position.Y = tile.position.Y - texture.Height / 3;
+                        curSpeed.Y = 0;
                     }
-                playerRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height/3);
-
+                    else if (curSpeed.Y < 0)
+                    {
+                        position.Y = tile.position.Y + Settings.gridsize;
+                        curSpeed.Y = 0;
+                    }
                 }
+                playerRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height / 3);
+                if (tile.type != 0 && playerRect.Intersects(tileRect))
+                {
+                    if (curSpeed.X < 0 && tile.position.Y != position.Y + texture.Height / 3)
+                    {
+                        position.X = tile.position.X + Settings.gridsize;
+                        curSpeed.X = 0;
+                    }
+                    else if (curSpeed.X > 0 && tile.position.Y != position.Y + texture.Height / 3)
+                    {
+                        position.X = tile.position.X - texture.Width;
+                        curSpeed.X = 0;
+                    }
+                }
+                playerRect = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height / 3);
+
             }
             if (inAir && action == Actions.Still)
             {
@@ -126,7 +129,5 @@ namespace Wizards
             }
 
         }
-
     }
-
 }

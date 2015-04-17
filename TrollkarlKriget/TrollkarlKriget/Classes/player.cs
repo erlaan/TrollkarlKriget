@@ -23,10 +23,10 @@ namespace Wizards
 		private Keys Melee;
 		private int spriteNum = 3;
         private int acceleration = 1;
-        private int maxSpeed = 40;
+        private int maxSpeed = 10;
         private bool mAction;
         bool inAir = false;
-        int jumpForce = 0;
+        int jumpForce = -30;
         public enum Directions {Left, Right, None};
         Directions direction;
 
@@ -49,22 +49,15 @@ namespace Wizards
 		{
 			KeyboardState keyboardState = Keyboard.GetState();
             MouseState mouseState = Mouse.GetState();
-            if (keyboardState.IsKeyDown(Jump) && jumpForce == 0 && action != Actions.Jump)
+            if (keyboardState.IsKeyDown(Jump) && curSpeed.Y == 0 && action != Actions.Jump)
             {
-                //TODO Add Jump funktion
-                
-                action = Actions.Jump;
-                jumpForce = 30;
-            }
-            else if (jumpForce > 0)
-            {
-                action = Actions.Jump;
-                jumpForce--;
 
+                action = Actions.Jump;
+                curSpeed.Y = jumpForce;
             }
             else
-            //position.Y += world.gravity;
-            position.X += curSpeed.X;
+                curSpeed.Y = Math.Min(curSpeed.Y + 1, maxSpeed);
+
             
           
             if (Math.Abs(curSpeed.X) != maxSpeed)
@@ -73,7 +66,8 @@ namespace Wizards
                 {
 
                     curSpeed.X = Math.Min(curSpeed.X + acceleration, maxSpeed);
-                    action = Actions.Right;
+                    if (action!=Actions.Jump&&curSpeed.Y!=0)
+                        action = Actions.Right;
                     mAction = true;
                     direction = Directions.Right;
                 }
@@ -81,7 +75,8 @@ namespace Wizards
                 else if (keyboardState.IsKeyDown(Left))
                 {
                     curSpeed.X = Math.Max(curSpeed.X - acceleration, -maxSpeed);
-                    action = Actions.Left;
+                    if (action != Actions.Jump && curSpeed.Y != 0)
+                        action = Actions.Left;
                     mAction = true;
                     direction = Directions.Left;
                 }
@@ -144,23 +139,16 @@ namespace Wizards
             mAction = false;
 
 
-           Rectangle myRect = new Rectangle(
+            Rectangle myRect = new Rectangle(
                Convert.ToInt32(position.X),
                Convert.ToInt32(position.Y),
                texture.Width,
                (texture.Height / spriteNum));
-           if (curSpeed.X == 0)
-           {
-               action = Actions.Still;
-           }
-           if (inAir || action == Actions.Jump)
-           {
-               position.Y += world.gravity - jumpForce;
-           }
-           this.checkCollision(cam, world); 
 
-
+            position += curSpeed;
+            this.checkCollision(cam, world); 
 		}
+
 		public void Draw(SpriteBatch spriteBatch, Camera cam)
 		{
             Vector2 drawPos = position - cam.position;
